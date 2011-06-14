@@ -1,8 +1,8 @@
 touchlayoutsdir = $(datadir)/caribou/layouts/touch
 
 touchlayouts_DATA = \
-    ara.json \
-    il.json \
-    us.json
+    ara.xml \
+    il.xml \
+    us.xml
 
 EXTRA_DIST = $(touchlayouts_DATA)

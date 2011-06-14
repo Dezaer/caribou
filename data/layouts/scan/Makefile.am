@@ -1,6 +1,6 @@
 scanlayoutsdir = $(datadir)/caribou/layouts/scan
 
 scanlayouts_DATA = \
-    us.json
+    us.xml
 
 EXTRA_DIST = $(scanlayouts_DATA)

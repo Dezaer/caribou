@@ -1,0 +1,139 @@
+<?xml version="1.0" ?>
+<layout>
+  <level mode="default" name="level1">
+    <row>
+      <key name="period"/>
+      <key name="comma"/>
+      <key name="hebrew_qoph"/>
+      <key name="hebrew_resh"/>
+      <key name="hebrew_aleph"/>
+      <key name="hebrew_tet"/>
+      <key name="hebrew_waw"/>
+      <key name="hebrew_finalnun"/>
+      <key name="hebrew_finalmem"/>
+      <key name="hebrew_pe"/>
+      <key name="BackSpace"/>
+    </row>
+    <row>
+      <key margin-left="0.5" name="hebrew_shin"/>
+      <key name="hebrew_dalet"/>
+      <key name="hebrew_gimel"/>
+      <key name="hebrew_kaph"/>
+      <key name="hebrew_ayin"/>
+      <key name="hebrew_yod"/>
+      <key name="hebrew_chet"/>
+      <key name="hebrew_lamed"/>
+      <key name="hebrew_finalkaph"/>
+      <key name="hebrew_finalpe"/>
+    </row>
+    <row>
+      <key name="hebrew_zain"/>
+      <key name="hebrew_samech"/>
+      <key name="hebrew_bet"/>
+      <key name="hebrew_he"/>
+      <key name="hebrew_nun"/>
+      <key name="hebrew_mem"/>
+      <key name="hebrew_zade"/>
+      <key name="hebrew_taw"/>
+      <key name="hebrew_finalzade"/>
+      <key name="Return" width="2.0"/>
+    </row>
+    <row>
+      <key name="Caribou_Symbols" toggle="symbols1" width="2.0"/>
+      <key name="Caribou_Emoticons"/>
+      <key name="space" width="5.0"/>
+      <key margin-left="2.0" name="Caribou_Prefs"/>
+    </row>
+  </level>
+  <level mode="locked" name="symbols1">
+    <row>
+      <key name="1"/>
+      <key name="2"/>
+      <key name="3"/>
+      <key name="4"/>
+      <key name="5"/>
+      <key name="6"/>
+      <key name="7"/>
+      <key name="8"/>
+      <key name="9"/>
+      <key name="0"/>
+      <key name="BackSpace"/>
+    </row>
+    <row>
+      <key margin-left="0.5" name="minus"/>
+      <key name="slash"/>
+      <key name="colon"/>
+      <key name="semicolon"/>
+      <key name="parenleft"/>
+      <key name="parenright"/>
+      <key name="dollar"/>
+      <key name="ampersand"/>
+      <key name="at"/>
+      <key name="Return" width="1.5"/>
+    </row>
+    <row>
+      <key name="Caribou_Symbols_More" toggle="symbols2" width="2.0"/>
+      <key name="period"/>
+      <key name="comma"/>
+      <key name="question"/>
+      <key name="slash"/>
+      <key name="exclam"/>
+      <key name="apostrophe"/>
+      <key name="quotedbl"/>
+      <key name="bar"/>
+      <key name="numbersign"/>
+    </row>
+    <row>
+      <key name="Caribou_Alpha" toggle="default" width="2.0"/>
+      <key name="Caribou_Emoticons"/>
+      <key name="space" width="5.0"/>
+      <key margin-left="2.0" name="Caribou_Prefs"/>
+    </row>
+  </level>
+  <level mode="locked" name="symbols2">
+    <row>
+      <key name="percent"/>
+      <key name="bracketleft"/>
+      <key name="bracketright"/>
+      <key name="braceleft"/>
+      <key name="braceright"/>
+      <key name="backslash"/>
+      <key name="plus"/>
+      <key name="equal"/>
+      <key name="grave"/>
+      <key name="underscore"/>
+      <key name="BackSpace"/>
+    </row>
+    <row>
+      <key margin-left="0.5" name="less"/>
+      <key name="greater"/>
+      <key name="asterisk"/>
+      <key name="semicolon"/>
+      <key name="parenleft"/>
+      <key name="parenright"/>
+      <key name="dollar"/>
+      <key name="ampersand"/>
+      <key name="at"/>
+      <key name="Return" width="1.5"/>
+    </row>
+    <row>
+      <key name="Caribou_Symbols" toggle="symbols1" width="2.0"/>
+      <key name="period"/>
+      <key name="comma"/>
+      <key name="question"/>
+      <key name="slash"/>
+      <key name="exclam"/>
+      <key name="apostrophe"/>
+      <key name="quotedbl"/>
+      <key name="bar"/>
+      <key name="numbersign"/>
+    </row>
+    <row>
+      <key name="Caribou_Alpha" toggle="default" width="2.0"/>
+      <key name="Caribou_Emoticons"/>
+      <key name="space" width="5.0"/>
+      <key margin-left="2.0" name="Caribou_Prefs"/>
+    </row>
+  </level>
+</layout>
+
