@@ -40,8 +40,7 @@ namespace Caribou {
             extended_keys = new Gee.ArrayList<KeyModel> ();
         }
 
-        internal void add_subkey (string name) {
-            KeyModel key = new KeyModel (name);
+        internal void add_subkey (KeyModel key) {
             key.key_activated.connect(on_subkey_activated);
             extended_keys.add (key);
         }
