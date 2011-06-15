@@ -42,8 +42,8 @@
       <key name="p"/>
       <key name="BackSpace"/>
     </row>
-    <row>
-      <key margin-left="0.5" name="a">
+    <row align="right">
+      <key name="a">
         <key name="a"/>
         <key name="agrave"/>
         <key name="aacute"/>
@@ -81,10 +81,10 @@
       <key name="question"/>
     </row>
     <row>
-      <key name="Caribou_Symbols" toggle="symbols1" width="2.0"/>
-      <key name="Caribou_Emoticons"/>
-      <key name="space" width="5.0"/>
-      <key margin-left="2.0" name="Caribou_Prefs"/>
+      <key align="left" name="Caribou_Symbols" toggle="symbols1" width="2.0"/>
+      <key align="left" name="Caribou_Emoticons"/>
+      <key align="left" name="space" width="5.0"/>
+      <key align="right" name="Caribou_Prefs"/>
     </row>
   </level>
   <level mode="latched" name="level2">
@@ -129,8 +129,8 @@
       <key name="P"/>
       <key name="BackSpace"/>
     </row>
-    <row>
-      <key margin-left="0.5" name="A">
+    <row align="right">
+      <key name="A">
         <key name="A"/>
         <key name="Agrave"/>
         <key name="Aacute"/>
@@ -168,10 +168,10 @@
       <key name="question"/>
     </row>
     <row>
-      <key name="Caribou_Symbols" toggle="default" width="2.0"/>
-      <key name="Caribou_Emoticons"/>
-      <key name="space" width="5.0"/>
-      <key margin-left="2.0" name="Caribou_Prefs"/>
+      <key align="left" name="Caribou_Symbols" toggle="symbols1" width="2.0"/>
+      <key align="left" name="Caribou_Emoticons"/>
+      <key align="left" name="space" width="5.0"/>
+      <key align="right" name="Caribou_Prefs"/>
     </row>
   </level>
   <level mode="locked" name="symbols1">
@@ -188,8 +188,8 @@
       <key name="0"/>
       <key name="BackSpace"/>
     </row>
-    <row>
-      <key margin-left="0.5" name="minus"/>
+    <row align="right">
+      <key name="minus"/>
       <key name="slash"/>
       <key name="colon"/>
       <key name="semicolon"/>
@@ -219,10 +219,10 @@
       <key name="numbersign"/>
     </row>
     <row>
-      <key name="Caribou_Alpha" toggle="default" width="2.0"/>
-      <key name="Caribou_Emoticons"/>
-      <key name="space" width="5.0"/>
-      <key margin-left="2.0" name="Caribou_Prefs"/>
+      <key align="left" name="Caribou_Alpha" toggle="default" width="2.0"/>
+      <key align="left" name="Caribou_Emoticons"/>
+      <key align="left" name="space" width="5.0"/>
+      <key align="right" name="Caribou_Prefs"/>
     </row>
   </level>
   <level mode="locked" name="symbols2">
@@ -239,8 +239,8 @@
       <key name="underscore"/>
       <key name="BackSpace"/>
     </row>
-    <row>
-      <key margin-left="0.5" name="less"/>
+    <row align="right">
+      <key align="right" name="less"/>
       <key name="greater"/>
       <key name="asterisk"/>
       <key name="semicolon"/>
@@ -264,10 +264,10 @@
       <key name="numbersign"/>
     </row>
     <row>
-      <key name="Caribou_Alpha" toggle="default" width="2.0"/>
-      <key name="Caribou_Emoticons"/>
-      <key name="space" width="5.0"/>
-      <key margin-left="2.0" name="Caribou_Prefs"/>
+      <key align="left" name="Caribou_Alpha" toggle="default" width="2.0"/>
+      <key align="left" name="Caribou_Emoticons"/>
+      <key align="left" name="space" width="5.0"/>
+      <key align="right" name="Caribou_Prefs"/>
     </row>
   </level>
 </layout>

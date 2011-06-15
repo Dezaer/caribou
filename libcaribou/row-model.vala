@@ -9,22 +9,9 @@ namespace Caribou {
             columns = new Gee.ArrayList<ColumnModel> ();
         }
 
-        internal void add_key (int colnum, KeyModel key) {
-            int colindex = colnum;
-            ColumnModel column = null;
-
-            if (colnum < 0)
-                colindex = columns.size + colnum;
-
-            if (colnum >= columns.size) {
-                column = new ColumnModel ();
-                column.key_activated.connect ((k) => { key_activated (k); });
-                columns.add(column);
-            } else {
-                column = columns[colindex];
-            }
-
-            column.add_key (key);
+        internal void add_column (ColumnModel column) {
+            column.key_activated.connect ((k) => { key_activated (k); });
+            columns.add(column);
         }
 
         public ColumnModel[] get_columns () {

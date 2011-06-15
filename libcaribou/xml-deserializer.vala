@@ -91,34 +91,40 @@ namespace Caribou {
 
         public static void load_rows (LevelModel level, Xml.Node* node) {
             assert (node->name == "level");
-            int rownum = 0;
             for (Xml.Node* i = node->children; i != null; i = i->next) {
                 if (i->type != ElementType.ELEMENT_NODE)
                     continue;
 
-                int colnum = 0;
+                RowModel row = new RowModel ();
+                level.add_row (row);
+
                 for (Xml.Node* i2 = i->children; i2 != null; i2 = i2->next) {
-                    if (i2->name == "key")
-                        level.add_key (rownum, colnum, load_key(i2));
-                    else if (i2->name == "column")
-                        load_column (level, rownum, colnum++, i2);
+                    if (i2->type != ElementType.ELEMENT_NODE)
+                        continue;
+
+                    if (i2->name == "key") {
+                        load_column (row, i->get_prop ("align"), i);
+                        break;
+                    }
+
+                    load_column (row, i2->get_prop ("align"), i2);
                 }
-                rownum++;
             }
         }
 
-        public static void load_column (LevelModel level, int row, int col,
-                                        Xml.Node* node) {
-            assert (node->name == "column");
+        public static void load_column (RowModel row, string? align, Xml.Node* node) {
+            ColumnModel column = new ColumnModel ();
+            row.add_column (column);
+
             for (Xml.Node* i = node->children; i != null; i = i->next) {
                 if (i->type != ElementType.ELEMENT_NODE)
                     continue;
-                
-                level.add_key (row, col, load_key (i));
+
+                column.add_key (load_key (i, align));
             }
         }
 
-        public static KeyModel load_key (Xml.Node* node) {
+        public static KeyModel load_key (Xml.Node* node, string? align) {
             assert (node->name == "key");
 
             string name = node->get_prop ("name");
@@ -126,11 +132,14 @@ namespace Caribou {
 
             KeyModel key = new KeyModel (name);
 
+            if (align != null)
+                key.align = align;
+
             for (Attr* prop = node->properties; prop != null; prop = prop->next) {
                 if (prop->name == "toggle")
                     key.toggle = prop->children->content;
-                else if (prop->name == "margin-left")
-                    key.margin_left = double.parse (prop->children->content);
+                else if (prop->name == "align")
+                    key.align = prop->children->content;
                 else if (prop->name == "width")
                     key.width = double.parse (prop->children->content);
             }
@@ -139,7 +148,7 @@ namespace Caribou {
                 if (i->type != ElementType.ELEMENT_NODE)
                     continue;
 
-                key.add_subkey (load_key (i));
+                key.add_subkey (load_key (i, null));
             }
 
             return key;

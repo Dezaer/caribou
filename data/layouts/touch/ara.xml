@@ -14,8 +14,8 @@
       <key name="Arabic_jeem"/>
       <key name="BackSpace"/>
     </row>
-    <row>
-      <key margin-left="0.5" name="Arabic_sheen"/>
+    <row align="center">
+      <key name="Arabic_sheen"/>
       <key name="Arabic_seen"/>
       <key name="Arabic_yeh"/>
       <key name="Arabic_beh"/>
@@ -39,10 +39,10 @@
       <key name="Return" width="2.0"/>
     </row>
     <row>
-      <key name="Caribou_Symbols" toggle="symbols1" width="2.0"/>
-      <key name="Arabic_fathatan"/>
-      <key name="space" width="5.0"/>
-      <key margin-left="2.0" name="Caribou_Prefs"/>
+      <key align="left" name="Caribou_Symbols" toggle="symbols1" width="2.0"/>
+      <key align="left" name="Arabic_fathatan"/>
+      <key align="left" name="space" width="5.0"/>
+      <key align="right" name="Caribou_Prefs"/>
     </row>
   </level>
   <level mode="locked" name="symbols1">
@@ -59,8 +59,8 @@
       <key name="Arabic_0"/>
       <key name="BackSpace"/>
     </row>
-    <row>
-      <key margin-left="0.5" name="minus"/>
+    <row align="center">
+      <key name="minus"/>
       <key name="slash"/>
       <key name="colon"/>
       <key name="Arabic_semicolon"/>
@@ -84,10 +84,10 @@
       <key name="numbersign"/>
     </row>
     <row>
-      <key name="Caribou_Alpha" toggle="default" width="2.0"/>
-      <key name="Caribou_Emoticons"/>
-      <key name="space" width="5.0"/>
-      <key margin-left="2.0" name="Caribou_Prefs"/>
+      <key align="left" name="Caribou_Alpha" toggle="default" width="2.0"/>
+      <key align="left" name="Caribou_Emoticons"/>
+      <key align="left" name="space" width="5.0"/>
+      <key align="right" name="Caribou_Prefs"/>
     </row>
   </level>
   <level mode="locked" name="symbols2">
@@ -104,8 +104,8 @@
       <key name="underscore"/>
       <key name="BackSpace"/>
     </row>
-    <row>
-      <key margin-left="0.5" name="less"/>
+    <row align="center">
+      <key name="less"/>
       <key name="greater"/>
       <key name="asterisk"/>
       <key name="semicolon"/>
@@ -129,10 +129,10 @@
       <key name="numbersign"/>
     </row>
     <row>
-      <key name="Caribou_Alpha" toggle="default" width="2.0"/>
-      <key name="Caribou_Emoticons"/>
-      <key name="space" width="5.0"/>
-      <key margin-left="2.0" name="Caribou_Prefs"/>
+      <key align="left" name="Caribou_Alpha" toggle="default" width="2.0"/>
+      <key align="left" name="Caribou_Emoticons"/>
+      <key align="left" name="space" width="5.0"/>
+      <key align="right" name="Caribou_Prefs"/>
     </row>
   </level>
 </layout>

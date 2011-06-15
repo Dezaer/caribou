@@ -2,7 +2,7 @@ using GLib;
 
 namespace Caribou {
     public class KeyModel : GLib.Object, IScannableItem, IKeyboardObject {
-        public double margin_left { get; set; default = 0.0; }
+        public string align { get; set; default = "center"; }
         public double width { get; set; default = 1.0; }
         public string toggle { get; set; default = ""; }
 

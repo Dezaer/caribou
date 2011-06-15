@@ -12,22 +12,9 @@ namespace Caribou {
             rows = new Gee.ArrayList<RowModel> ();
         }
 
-        internal void add_key (int rownum, int colnum, KeyModel key) {
-            int rowindex = rownum;
-            RowModel row = null;
-
-            if (rownum < 0)
-                rowindex = rows.size + rownum;
-
-            if (rownum >= rows.size) {
-                row = new RowModel ();
-                row.key_activated.connect (on_key_activated);
-                rows.add(row);
-            } else {
-                row = rows[rowindex];
-            }
-
-            row.add_key (colnum, key);
+        internal void add_row (RowModel row) {
+            row.key_activated.connect (on_key_activated);
+            rows.add(row);
         }
 
         public RowModel[] get_rows () {
