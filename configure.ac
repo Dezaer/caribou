@@ -61,8 +61,8 @@ dnl == IM modules ==
 AC_ARG_ENABLE(im_gtk3_module,
     AS_HELP_STRING([--enable-im-gtk3-module],
                    [Build GTK3 im module]),
-    [enable_gtk3_im_modules=$enableval],
-    [enable_gtk3_im_modules=no]
+    [enable_gtk3_im_module=$enableval],
+    [enable_gtk3_im_module=no]
 )
 AM_CONDITIONAL([ENABLE_GTK3_IM_MODULE], [test x"$enable_gtk3_im_module" = x"yes"])
 
@@ -79,8 +79,8 @@ fi
 AC_ARG_ENABLE(im_gtk2_module,
     AS_HELP_STRING([--enable-im-gtk2-module],
                    [Build GTK2 im module]),
-    [enable_gtk2_im_modules=$enableval],
-    [enable_gtk2_im_modules=no]
+    [enable_gtk2_im_module=$enableval],
+    [enable_gtk2_im_module=no]
 )
 AM_CONDITIONAL([ENABLE_GTK2_IM_MODULE], [test x"$enable_gtk2_im_module" = x"yes"])
 
