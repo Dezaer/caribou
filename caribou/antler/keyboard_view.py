@@ -243,7 +243,7 @@ class AntlerLayout(Gtk.Box):
             self.add_row([c.get_children() for c in row.get_columns()], row_num)
 
 class AntlerKeyboardView(Gtk.Notebook):
-    def __init__(self):
+    def __init__(self, keyboard_type):
         gobject.GObject.__init__(self)
         settings = AntlerSettings()
         self.set_show_tabs(False)
@@ -269,8 +269,7 @@ class AntlerKeyboardView(Gtk.Notebook):
                 Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION + 1)
 
         self.scanner = Caribou.Scanner()
-        self.set_keyboard_model(settings.keyboard_type.value)
-        settings.keyboard_type.connect('value-changed', self._on_kb_type_changed)
+        self.set_keyboard_model(keyboard_type)
 
     def set_keyboard_model(self, keyboard_type):
         self.keyboard_model = Caribou.KeyboardModel(keyboard_type=keyboard_type)
@@ -292,14 +291,6 @@ class AntlerKeyboardView(Gtk.Notebook):
                 self.layers[gname][lname] = self.append_page(layout, None)
 
         self._set_to_active_layer()
-
-    def _on_kb_type_changed(self, setting, value):
-        is_visible = self.get_visible()
-        for l in [self.get_nth_page(i) for i in xrange(self.get_n_pages ())]:
-            self.remove(l)
-        self.set_keyboard_model(value)
-        if is_visible:
-            self.show_all ()
 
     def _on_key_activated(self, model, key):
         if key.props.name == "Caribou_Prefs":

@@ -195,7 +195,7 @@ class ProximityWindowBase(AnimatedWindowBase):
             return sqrt((px - x2)**2 + (py - y2)**2)
 
 class AntlerWindow(ProximityWindowBase):
-    def __init__(self, text_entry_mech, placement=None,
+    def __init__(self, keyboard_view_factory, placement=None,
                  min_alpha=1.0, max_alpha=1.0, max_distance=100):
         ProximityWindowBase.__init__(self)
 
@@ -204,10 +204,16 @@ class AntlerWindow(ProximityWindowBase):
         ctx = self.get_style_context()
         ctx.add_class("antler-keyboard-window")
 
+        settings = AntlerSettings()
+        settings.keyboard_type.connect('value-changed', self.on_kb_type_changed)
+
         self._vbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
         self.add(self._vbox)
-        self.keyboard = text_entry_mech
-        self._vbox.pack_start(text_entry_mech, True, True, 0)
+
+        self.keyboard_view_factory = keyboard_view_factory
+        self.keyboard_view = keyboard_view_factory (settings.keyboard_type.value)
+
+        self._vbox.pack_start(self.keyboard_view, True, True, 0)
 
         self.connect("size-allocate", self.on_size_allocate)
 
@@ -215,6 +221,13 @@ class AntlerWindow(ProximityWindowBase):
         self._entry_location = Rectangle()
         self.placement = placement or \
             AntlerWindowPlacement()
+
+    def on_kb_type_changed(self, setting, value):
+        self._vbox.remove(self.keyboard_view)
+        self.resize(1, 1)
+        self.keyboard_view = self.keyboard_view_factory (value)
+        self._vbox.pack_start(self.keyboard_view, True, True, 0)
+        self.keyboard_view.show_all()
 
     def on_size_allocate(self, widget, allocation):
         self._update_position()
@@ -299,7 +312,7 @@ class AntlerWindow(ProximityWindowBase):
         return offset
 
 class AntlerWindowDocked(AntlerWindow):
-    def __init__(self, text_entry_mech, horizontal_roll=False):
+    def __init__(self, keyboard_view_factory, horizontal_roll=False):
         placement = AntlerWindowPlacement(
             xalign=AntlerWindowPlacement.START,
             yalign=AntlerWindowPlacement.END,
@@ -307,7 +320,7 @@ class AntlerWindowDocked(AntlerWindow):
             ystickto=AntlerWindowPlacement.SCREEN,
             xgravitate=AntlerWindowPlacement.INSIDE)
 
-        AntlerWindow.__init__(self, text_entry_mech, placement)
+        AntlerWindow.__init__(self, keyboard_view_factory, placement)
 
         self.horizontal_roll = horizontal_roll
         self._rolled_in = False
@@ -378,7 +391,7 @@ class AntlerWindowDocked(AntlerWindow):
         animation.connect('completed', lambda x: AntlerWindow.hide(self))
 
 class AntlerWindowEntry(AntlerWindow):
-    def __init__(self, text_entry_mech):
+    def __init__(self, keyboard_view_factory):
         placement = AntlerWindowPlacement(
             xalign=AntlerWindowPlacement.START,
             xstickto=AntlerWindowPlacement.ENTRY,
@@ -386,7 +399,7 @@ class AntlerWindowEntry(AntlerWindow):
             xgravitate=AntlerWindowPlacement.INSIDE,
             ygravitate=AntlerWindowPlacement.OUTSIDE)
 
-        AntlerWindow.__init__(self, text_entry_mech, placement)
+        AntlerWindow.__init__(self, keyboard_view_factory, placement)
 
 
     def _calculate_axis(self, axis_placement, root_bbox):
@@ -471,7 +484,7 @@ if __name__ == "__main__":
     import signal
     signal.signal(signal.SIGINT, signal.SIG_DFL)
 
-    w = AntlerWindowDocked(keyboard_view.AntlerKeyboardView())
+    w = AntlerWindowDocked(keyboard_view.AntlerKeyboardView)
     w.show_all()
 
     try:

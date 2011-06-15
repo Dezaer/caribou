@@ -8,7 +8,7 @@ class AntlerKeyboardService(Caribou.KeyboardService):
     def __init__(self):
         gobject.GObject.__init__(self)
         self.register_keyboard("Antler")
-        self.window = AntlerWindowEntry(AntlerKeyboardView())
+        self.window = AntlerWindowEntry(AntlerKeyboardView)
 
     def run(self):
         loop = gobject.MainLoop()
