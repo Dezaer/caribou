@@ -7,6 +7,7 @@ from gi.repository import Caribou
 import gobject
 import glib
 import os
+from math import ceil
 
 PRETTY_LABELS = {
     "BackSpace" : u'\u232b',
@@ -23,12 +24,13 @@ PRETTY_LABELS = {
 }
 
 class AntlerKey(Gtk.Button):
-    def __init__(self, key):
+    def __init__(self, key, spacing=0):
         gobject.GObject.__init__(self)
         self.caribou_key = key.weak_ref()
         self.connect("pressed", self._on_pressed)
         self.connect("released", self._on_released)
         self.set_label(self._get_key_label())
+        self._spacing = spacing
 
         label = self.get_child()
         label.set_use_markup(True)
@@ -98,11 +100,10 @@ class AntlerKey(Gtk.Button):
         if self.caribou_key():
             self.caribou_key().handler_unblock(handler)
 
-    def do_get_preferred_width_for_height(self, w):
-        return (w, w)
-
-    def do_get_request_mode(self):
-        return Gtk.SizeRequestMode.WIDTH_FOR_HEIGHT
+    def do_get_preferred_width_for_height(self, h):
+        w = self.caribou_key().props.width
+        width = int(h * w + ceil(w - 1) * self._spacing)
+        return (width, width)
 
 class AntlerSubLevel(Gtk.Window):
     def __init__(self, key):
@@ -137,13 +138,14 @@ class AntlerSubLevel(Gtk.Window):
 class AntlerLayout(Gtk.Box):
     KEY_SPAN = 4
 
-    def __init__(self, level=None):
+    def __init__(self, level=None, spacing=6):
         gobject.GObject.__init__(self, orientation=Gtk.Orientation.HORIZONTAL)
         self.set_spacing(12)
         self._columns = []
         self._keys_map = {}
         self._active_scan_group = []
         self._dwelling_scan_group = []
+        self._spacing = spacing
 
         ctx = self.get_style_context()
         ctx.add_class("antler-keyboard-layout")
@@ -155,14 +157,12 @@ class AntlerLayout(Gtk.Box):
             level.connect("scan-cleared", self._on_scan_cleared)
 
     def add_column (self):
-        col = Gtk.Grid()
-        col.set_column_homogeneous(True)
-        col.set_row_homogeneous(True)
-        col.set_row_spacing(6)
-        col.set_column_spacing(6)
-        self.pack_start (col, True, True, 0)
-        self._columns.append(col)
-        return col
+        box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
+        box.set_homogeneous(True)
+        box.set_spacing(self._spacing)
+        self.pack_start (box, True, True, 0)
+        self._columns.append(box)
+        return box
 
     def _on_scan_cleared (self, level):
         self._foreach_key(self._active_scan_group,
@@ -214,17 +214,29 @@ class AntlerLayout(Gtk.Box):
             except IndexError:
                 column = self.add_column()
 
+            box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
+            column.pack_start(box, True, True, 0)
+
+            alignboxes = {}
+
             for i, key in enumerate(col):
-                antler_key = AntlerKey(key)
+                align = key.props.align
+                if not alignboxes.has_key(align):
+                    alignbox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
+                    alignbox.set_spacing(self._spacing)
+                    alignboxes[align] = alignbox
+                    if align == "left":
+                        box.pack_start(alignbox, False, False, 0)
+                    elif align == "center":
+                        box.pack_start(alignbox, True, False, 0)
+                    elif align == "right":
+                        box.pack_end(alignbox, False, False, 0)
+                else:
+                    alignbox = alignboxes[align]
+
+                antler_key = AntlerKey(key, self._spacing)
                 self._keys_map[key] = antler_key
-                ctx = antler_key.get_style_context()
-                ctx.add_class("antler-keyboard-row%d" % row_num)
-                column.attach(antler_key,
-                              x + int(key.props.margin_left * self.KEY_SPAN),
-                              row_num * self.KEY_SPAN,
-                              int(self.KEY_SPAN * key.props.width),
-                              self.KEY_SPAN)
-                x += int((key.props.width + key.props.margin_left ) * self.KEY_SPAN)
+                alignbox.pack_start (antler_key, True, True, 0);
  
     def load_rows(self, rows):
         for row_num, row in enumerate(rows):
