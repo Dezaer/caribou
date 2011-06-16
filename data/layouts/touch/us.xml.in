@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<layout xmlns:xi="http://www.w3.org/2001/XInclude">
+  <xi:include href="common/qwerty.xml#xpointer(//level[@name='level1'])"/>
+  <xi:include href="common/qwerty.xml#xpointer(//level[@name='level2'])"/>
+  <xi:include href="common/symbols.xml#xpointer(//level[@name='symbols1'])"/>
+  <xi:include href="common/symbols.xml#xpointer(//level[@name='symbols2'])"/>
+</layout>
+

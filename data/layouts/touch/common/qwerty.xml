@@ -1,5 +1,5 @@
 <?xml version="1.0" ?>
-<layout>
+<external>
   <level mode="default" name="level1">
     <row>
       <key name="q"/>
@@ -174,101 +174,4 @@
       <key align="right" name="Caribou_Prefs"/>
     </row>
   </level>
-  <level mode="locked" name="symbols1">
-    <row>
-      <key name="1"/>
-      <key name="2"/>
-      <key name="3"/>
-      <key name="4"/>
-      <key name="5"/>
-      <key name="6"/>
-      <key name="7"/>
-      <key name="8"/>
-      <key name="9"/>
-      <key name="0"/>
-      <key name="BackSpace"/>
-    </row>
-    <row align="right">
-      <key name="minus"/>
-      <key name="slash"/>
-      <key name="colon"/>
-      <key name="semicolon"/>
-      <key name="parenleft"/>
-      <key name="parenright"/>
-      <key name="dollar"/>
-      <key name="ampersand"/>
-      <key name="at"/>
-      <key name="Return" width="1.5"/>
-    </row>
-    <row>
-      <key name="Caribou_Symbols_More" toggle="symbols2" width="2.0"/>
-      <key name="period"/>
-      <key name="comma"/>
-      <key name="question">
-        <key name="question"/>
-        <key name="questiondown"/>
-      </key>
-      <key name="slash"/>
-      <key name="exclam">
-        <key name="exclam"/>
-        <key name="exclamdown"/>
-      </key>
-      <key name="apostrophe"/>
-      <key name="quotedbl"/>
-      <key name="bar"/>
-      <key name="numbersign"/>
-    </row>
-    <row>
-      <key align="left" name="Caribou_Alpha" toggle="default" width="2.0"/>
-      <key align="left" name="Caribou_Emoticons"/>
-      <key align="left" name="space" width="5.0"/>
-      <key align="right" name="Caribou_Prefs"/>
-    </row>
-  </level>
-  <level mode="locked" name="symbols2">
-    <row>
-      <key name="percent"/>
-      <key name="bracketleft"/>
-      <key name="bracketright"/>
-      <key name="braceleft"/>
-      <key name="braceright"/>
-      <key name="backslash"/>
-      <key name="plus"/>
-      <key name="equal"/>
-      <key name="grave"/>
-      <key name="underscore"/>
-      <key name="BackSpace"/>
-    </row>
-    <row align="right">
-      <key align="right" name="less"/>
-      <key name="greater"/>
-      <key name="asterisk"/>
-      <key name="semicolon"/>
-      <key name="parenleft"/>
-      <key name="parenright"/>
-      <key name="dollar"/>
-      <key name="ampersand"/>
-      <key name="at"/>
-      <key name="Return" width="1.5"/>
-    </row>
-    <row>
-      <key name="Caribou_Symbols" toggle="symbols1" width="2.0"/>
-      <key name="period"/>
-      <key name="comma"/>
-      <key name="question"/>
-      <key name="slash"/>
-      <key name="exclam"/>
-      <key name="apostrophe"/>
-      <key name="quotedbl"/>
-      <key name="bar"/>
-      <key name="numbersign"/>
-    </row>
-    <row>
-      <key align="left" name="Caribou_Alpha" toggle="default" width="2.0"/>
-      <key align="left" name="Caribou_Emoticons"/>
-      <key align="left" name="space" width="5.0"/>
-      <key align="right" name="Caribou_Prefs"/>
-    </row>
-  </level>
-</layout>
-
+</external>

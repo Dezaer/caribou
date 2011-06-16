@@ -1,0 +1,57 @@
+<?xml version="1.0" ?>
+<layout xmlns:xi="http://www.w3.org/2001/XInclude">
+  <level mode="default" name="level1">
+    <row>
+      <key name="Arabic_dad"/>
+      <key name="Arabic_sad"/>
+      <key name="Arabic_qaf"/>
+      <key name="Arabic_feh"/>
+      <key name="Arabic_ghain"/>
+      <key name="Arabic_ain"/>
+      <key name="Arabic_ha"/>
+      <key name="Arabic_khah"/>
+      <key name="Arabic_hah"/>
+      <key name="Arabic_jeem"/>
+      <key name="BackSpace"/>
+    </row>
+    <row align="center">
+      <key name="Arabic_sheen"/>
+      <key name="Arabic_seen"/>
+      <key name="Arabic_yeh"/>
+      <key name="Arabic_beh"/>
+      <key name="Arabic_lam"/>
+      <key name="Arabic_alef"/>
+      <key name="Arabic_teh"/>
+      <key name="Arabic_noon"/>
+      <key name="Arabic_meem"/>
+      <key name="Arabic_kaf"/>
+    </row>
+    <row>
+      <key name="Arabic_zah"/>
+      <key name="Arabic_tah"/>
+      <key name="Arabic_thal"/>
+      <key name="Arabic_dal"/>
+      <key name="Arabic_zain"/>
+      <key name="Arabic_ra"/>
+      <key name="Arabic_waw"/>
+      <key name="Arabic_tehmarbuta"/>
+      <key name="Arabic_theh"/>
+      <key name="Return" width="2.0"/>
+    </row>
+    <row>
+      <key align="left" name="Caribou_Symbols" toggle="symbols1" width="2.0"/>
+      <key align="left" name="Arabic_fathatan"/>
+      <key align="left" name="space" width="5.0"/>
+      <key align="right" name="Caribou_Prefs"/>
+    </row>
+  </level>
+  <xi:include href="common/symbols.xml#xpointer(//level[@name='symbols1'])"/>
+  <xi:include href="common/symbols.xml#xpointer(//level[@name='symbols2'])"/>
+  <override xpath="//key[@name='question']">
+    <key name="Arabic_question_mark">
+      <key name="Arabic_question_mark"/>
+      <key name="question"/>
+      <key name="questiondown"/>
+    </key>
+  </override>
+</layout>

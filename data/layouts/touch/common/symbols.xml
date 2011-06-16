@@ -1,50 +1,5 @@
 <?xml version="1.0" ?>
-<layout>
-  <level mode="default" name="level1">
-    <row>
-      <key name="period"/>
-      <key name="comma"/>
-      <key name="hebrew_qoph"/>
-      <key name="hebrew_resh"/>
-      <key name="hebrew_aleph"/>
-      <key name="hebrew_tet"/>
-      <key name="hebrew_waw"/>
-      <key name="hebrew_finalnun"/>
-      <key name="hebrew_finalmem"/>
-      <key name="hebrew_pe"/>
-      <key name="BackSpace"/>
-    </row>
-    <row align="center">
-      <key name="hebrew_shin"/>
-      <key name="hebrew_dalet"/>
-      <key name="hebrew_gimel"/>
-      <key name="hebrew_kaph"/>
-      <key name="hebrew_ayin"/>
-      <key name="hebrew_yod"/>
-      <key name="hebrew_chet"/>
-      <key name="hebrew_lamed"/>
-      <key name="hebrew_finalkaph"/>
-      <key name="hebrew_finalpe"/>
-    </row>
-    <row>
-      <key name="hebrew_zain"/>
-      <key name="hebrew_samech"/>
-      <key name="hebrew_bet"/>
-      <key name="hebrew_he"/>
-      <key name="hebrew_nun"/>
-      <key name="hebrew_mem"/>
-      <key name="hebrew_zade"/>
-      <key name="hebrew_taw"/>
-      <key name="hebrew_finalzade"/>
-      <key name="Return" width="2.0"/>
-    </row>
-    <row>
-      <key name="Caribou_Symbols" align="left" toggle="symbols1" width="2.0"/>
-      <key name="Caribou_Emoticons" align="left"/>
-      <key name="space" width="5.0" align="left"/>
-      <key name="Caribou_Prefs" align="right"/>
-    </row>
-  </level>
+<external>
   <level mode="locked" name="symbols1">
     <row>
       <key name="1"/>
@@ -75,19 +30,25 @@
       <key name="Caribou_Symbols_More" toggle="symbols2" width="2.0"/>
       <key name="period"/>
       <key name="comma"/>
-      <key name="question"/>
+      <key name="question">
+        <key name="question"/>
+        <key name="questiondown"/>
+      </key>
       <key name="slash"/>
-      <key name="exclam"/>
+      <key name="exclam">
+        <key name="exclam"/>
+        <key name="exclamdown"/>
+      </key>
       <key name="apostrophe"/>
       <key name="quotedbl"/>
       <key name="bar"/>
       <key name="numbersign"/>
     </row>
     <row>
-      <key name="Caribou_Alpha" toggle="default" width="2.0" align="left"/>
-      <key name="Caribou_Emoticons" align="left"/>
-      <key name="space" width="5.0" align="left"/>
-      <key name="Caribou_Prefs" align="right"/>
+      <key align="left" name="Caribou_Alpha" toggle="default" width="2.0"/>
+      <key align="left" name="Caribou_Emoticons"/>
+      <key align="left" name="space" width="5.0"/>
+      <key align="right" name="Caribou_Prefs"/>
     </row>
   </level>
   <level mode="locked" name="symbols2">
@@ -105,7 +66,7 @@
       <key name="BackSpace"/>
     </row>
     <row align="right">
-      <key name="less"/>
+      <key align="right" name="less"/>
       <key name="greater"/>
       <key name="asterisk"/>
       <key name="semicolon"/>
@@ -129,11 +90,10 @@
       <key name="numbersign"/>
     </row>
     <row>
-      <key name="Caribou_Alpha" toggle="default" width="2.0" align="left"/>
-      <key name="Caribou_Emoticons" align="left"/>
-      <key name="space" width="5.0" align="left"/>
-      <key name="Caribou_Prefs" align="right"/>
+      <key align="left" name="Caribou_Alpha" toggle="default" width="2.0"/>
+      <key align="left" name="Caribou_Emoticons"/>
+      <key align="left" name="space" width="5.0"/>
+      <key align="right" name="Caribou_Prefs"/>
     </row>
   </level>
-</layout>
-
+</external>
