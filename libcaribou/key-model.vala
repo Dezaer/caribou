@@ -5,6 +5,7 @@ namespace Caribou {
         public string align { get; set; default = "center"; }
         public double width { get; set; default = 1.0; }
         public string toggle { get; set; default = ""; }
+        public bool latch { get; set; default = false; }
 
         private Gdk.ModifierType mod_mask;
         public bool is_modifier {
