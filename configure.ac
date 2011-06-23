@@ -124,6 +124,7 @@ data/antler/Makefile
 data/layouts/Makefile
 data/layouts/touch/Makefile
 data/layouts/scan/Makefile
+data/layouts/fullscale/Makefile
 libcaribou/Makefile
 im/Makefile
 im/gtk3/Makefile

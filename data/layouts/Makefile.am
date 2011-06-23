@@ -1,1 +1,1 @@
-SUBDIRS = scan touch
+SUBDIRS = scan touch fullscale
