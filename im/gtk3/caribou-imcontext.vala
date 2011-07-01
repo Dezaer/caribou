@@ -27,7 +27,7 @@ namespace Caribou {
 #endif
         }
 
-        private Atk.Object? find_focused_accessible (Atk.Object acc) {          
+        private Atk.Object? find_focused_accessible (Atk.Object acc) {
             Atk.StateSet state = acc.ref_state_set ();
 
             bool match = (state.contains_state (Atk.StateType.EDITABLE) &&
@@ -82,9 +82,8 @@ namespace Caribou {
 
                     if (widget is Gtk.Editable) {
                         /* Well behaved app */
-                        stdout.printf ("Well behaved app!\n");
                         get_origin_geometry (window, out x, out y, out w, out h);
-                    } else { 
+                    } else {
                         Atk.Object acc = widget.get_accessible ();
                         if (acc.get_role () == Atk.Role.REDUNDANT_OBJECT) {
                             /* It is probably Gecko */
@@ -96,9 +95,6 @@ namespace Caribou {
                         }
                     }
 
-                    stdout.printf ("focus_in %p %s %d %d %d %d\n", this,
-                                   window.is_visible ().to_string (), x, y, w, h);
-
                     try {
                         keyboard.show ();
                         keyboard.set_entry_location (x, y, w, h);
@@ -108,11 +104,9 @@ namespace Caribou {
                     return false;
                 });
         }
-                
+
 
         public override void focus_out () {
-            stdout.printf ("focus_out %p %s\n", this,
-                           window.is_visible ().to_string ());
             try {
                 keyboard.hide ();
             } catch (IOError e) {
@@ -130,7 +124,6 @@ namespace Caribou {
             } catch (Error e) {
                 stderr.printf ("%s\n", e.message);
             }
-            stdout.printf ("set_client_window %p %p\n", this, window);
         }
     }
 }
