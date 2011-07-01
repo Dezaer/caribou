@@ -104,7 +104,7 @@ dnl == Documentation ==
 GNOME_DOC_INIT
 
 dnl == GObject introspection ==
-GOBJECT_INTROSPECTION_CHECK([0.10.7])
+GOBJECT_INTROSPECTION_REQUIRE([0.10.7])
 
 dnl == generate makefiles ==
 AC_OUTPUT([

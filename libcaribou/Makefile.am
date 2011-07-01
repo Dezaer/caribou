@@ -53,7 +53,6 @@ EXTRA_DIST = \
 # Introspection support
 #
 
-if HAVE_INTROSPECTION
 girdir = $(datadir)/gir-1.0
 gir_DATA = Caribou-1.0.gir
 
@@ -65,7 +64,6 @@ Caribou-1.0.gir: _Caribou-1.0.gir
 
 Caribou-1.0.typelib: Caribou-1.0.gir
 	@INTROSPECTION_COMPILER@ --shared-library=libcaribou -o $@ $^
-endif
 
 Caribou-1.0.gir caribou-internals-1.0.vapi caribou-1.0.vapi: libcaribou.la
 
