@@ -1,4 +1,19 @@
 =============
+Version 0.3.3
+=============
+
+What's New
+==========
+- Converted layout files to preprocessed XML files that could include
+external layout files and override specific elements.
+- Fixed GI in Makefiles/configure.ac (bug #653268).
+- Fixed typo in IM configuring (bug #653754).
+
+New And Updated Translations
+============================
+- Mario Blättermann (de)
+
+=============
 Version 0.3.2
 =============
 
