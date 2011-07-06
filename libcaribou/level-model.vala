@@ -13,7 +13,9 @@ namespace Caribou {
         }
 
         internal void add_row (RowModel row) {
-            row.key_activated.connect (on_key_activated);
+            row.key_clicked.connect (on_key_clicked);
+            row.key_pressed.connect ((k) => { key_pressed (k); });
+            row.key_released.connect ((k) => { key_released (k); });
             rows.add(row);
         }
 
@@ -21,12 +23,12 @@ namespace Caribou {
             return (RowModel[]) rows.to_array ();
         }
 
-        private void on_key_activated (KeyModel key) {
+        private void on_key_clicked (KeyModel key) {
             if (key.toggle != "")
                 level_toggled (key.toggle);
             else if (mode == "latched")
                 level_toggled ("default");
-            key_activated (key);
+            key_clicked (key);
         }
 
         public override IScannableItem[] get_scan_children () {

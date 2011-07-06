@@ -2,7 +2,9 @@ namespace Caribou {
     public interface IKeyboardObject : Object {
         public abstract IKeyboardObject[] get_children ();
 
-        public signal void key_activated (KeyModel key);
+        public signal void key_clicked (KeyModel key);
+        public signal void key_pressed (KeyModel key);
+        public signal void key_released (KeyModel key);
 
         public virtual KeyModel[] get_keys () {
             Gee.ArrayList<KeyModel> keys = new Gee.ArrayList<KeyModel> ();

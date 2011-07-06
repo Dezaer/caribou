@@ -226,6 +226,16 @@ namespace Caribou {
             this.xdisplay.flush ();
         }
 
+        public void mod_lock (uint mask) {
+            Xkb.lock_modifiers (this.xdisplay, Xkb.UseCoreKbd, mask, mask);
+            this.xdisplay.flush ();
+        }
+
+        public void mod_unlock (uint mask) {
+            Xkb.lock_modifiers (this.xdisplay, Xkb.UseCoreKbd, mask, 0);
+            this.xdisplay.flush();
+        }
+
         public void mod_latch (uint mask) {
             Xkb.latch_modifiers (this.xdisplay, Xkb.UseCoreKbd, mask, mask);
             this.xdisplay.flush ();

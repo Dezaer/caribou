@@ -10,7 +10,9 @@ namespace Caribou {
         }
 
         internal void add_key (KeyModel key) {
-            key.key_activated.connect ((k) => { key_activated (k); });
+            key.key_clicked.connect ((k) => { key_clicked (k); });
+            key.key_pressed.connect ((k) => { key_pressed (k); });
+            key.key_released.connect ((k) => { key_released (k); });
             keys.add (key);
         }
 

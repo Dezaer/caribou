@@ -10,7 +10,10 @@ namespace Caribou {
         }
 
         internal void add_column (ColumnModel column) {
-            column.key_activated.connect ((k) => { key_activated (k); });
+            column.key_clicked.connect ((k) => { key_clicked (k); });
+            column.key_pressed.connect ((k) => { key_pressed (k); });
+            column.key_released.connect ((k) => { key_released (k); });
+
             columns.add(column);
         }
 

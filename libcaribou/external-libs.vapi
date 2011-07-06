@@ -38,6 +38,11 @@ namespace Xkb {
     public void latch_modifiers (X.Display dpy, uint device_spec, uint affect,
                                  uint values);
 
+    [CCode (cname = "XkbLockModifiers")]
+    public void lock_modifiers (X.Display dpy, uint device_spec, uint affect,
+                                uint values);
+
+
     [Compact]
     [CCode (cname = "XkbAnyEvent", free_function = "")]
     public struct AnyEvent {
@@ -86,7 +91,7 @@ namespace Xkb {
         public ushort flags;
         public ushort device_spec;
         public char min_key_code;
-        public char max_key_code;   
+        public char max_key_code;
         public Controls          ctrls;
         public ServerMap         server;
         public ClientMap         map;

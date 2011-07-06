@@ -8,6 +8,7 @@ namespace Caribou {
         private XAdapter xadapter;
         private Gee.HashMap<string, GroupModel> groups;
         private KeyModel last_activated_key;
+        private Gee.HashSet<KeyModel> active_mod_keys;
 
         construct {
             uint grpid;
@@ -29,6 +30,8 @@ namespace Caribou {
 
             grpid = xadapter.get_current_group (out group, out variant);
             on_group_changed (grpid, group, variant);
+
+            active_mod_keys = new Gee.HashSet<KeyModel> ();
         }
 
         private void populate_group (string group, string variant) {
@@ -36,17 +39,37 @@ namespace Caribou {
                                                           group, variant);
             if (grp != null) {
                 groups.set (GroupModel.create_group_name (group, variant), grp);
-                grp.key_activated.connect (on_key_activated);
+                grp.key_clicked.connect (on_key_clicked);
+                grp.key_pressed.connect (on_key_pressed);
+                grp.key_released.connect (on_key_released);
             }
         }
 
-        private void on_key_activated (KeyModel key) {
+        private void on_key_clicked (KeyModel key) {
             if (key.name == "Caribou_Repeat")
                 last_activated_key.activate ();
             else
                 last_activated_key = key;
 
-            key_activated (key);
+            key_clicked (key);
+        }
+
+        private void on_key_pressed (KeyModel key) {
+            if (key.is_modifier && key.modifier_state == ModifierState.LATCHED) {
+                active_mod_keys.add(key);
+            }
+        }
+
+        private void on_key_released (KeyModel key) {
+            if (!key.is_modifier) {
+                KeyModel[] modifiers = (KeyModel[]) active_mod_keys.to_array ();
+                foreach (KeyModel modifier in modifiers) {
+                    if (modifier.modifier_state == ModifierState.LATCHED) {
+                        modifier.modifier_state = ModifierState.NONE;
+                        modifier.release ();
+                    }
+                }
+            }
         }
 
         public string[] get_groups () {

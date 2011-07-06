@@ -6,6 +6,17 @@ namespace Caribou {
         public double width { get; set; default = 1.0; }
         public string toggle { get; set; default = ""; }
 
+        private Gdk.ModifierType mod_mask;
+        public bool is_modifier {
+            get {
+                return (mod_mask != 0);
+            }
+
+            set {}
+        }
+
+        public ModifierState modifier_state;
+
         public bool show_subkeys { get; private set; default = false; }
         public string name { get; private set; }
         public uint keyval { get; private set; }
@@ -28,43 +39,79 @@ namespace Caribou {
         private XAdapter xadapter;
         private Gee.ArrayList<KeyModel> extended_keys;
 
-        public signal void key_pressed ();
-        public signal void key_released ();
         public signal void key_hold_end ();
         public signal void key_hold ();
 
+        private const ModifierMapEntry mod_map[] = {
+            { "Control_L", Gdk.ModifierType.CONTROL_MASK },
+            { "Alt_L", Gdk.ModifierType.MOD1_MASK },
+            { null, 0 }
+        };
+
         public KeyModel (string name) {
             this.name = name;
+            mod_mask = (Gdk.ModifierType) 0;
+
+            int i = 0;
+            for (ModifierMapEntry entry=mod_map[i];
+                 entry.name != null;
+                 entry=mod_map[++i]) {
+                if (name == entry.name)
+                    mod_mask = entry.mask;
+            }
+
+            if (mod_mask == 0)
+                keyval = Gdk.keyval_from_name (name);
+
             xadapter = XAdapter.get_default();
-            keyval = Gdk.keyval_from_name (name);
             extended_keys = new Gee.ArrayList<KeyModel> ();
         }
 
         internal void add_subkey (KeyModel key) {
-            key.key_activated.connect(on_subkey_activated);
+            key.key_clicked.connect(on_subkey_clicked);
             extended_keys.add (key);
         }
 
-        private void on_subkey_activated (KeyModel key) {
-            key_activated (key);
+        private void on_subkey_clicked (KeyModel key) {
+            key_clicked (key);
             show_subkeys = false;
         }
 
         public void press () {
+            if (is_modifier) {
+                if (modifier_state == ModifierState.NONE) {
+                    modifier_state = ModifierState.LATCHED;
+                    xadapter.mod_lock(mod_mask);
+                } else {
+                    modifier_state = ModifierState.NONE;
+                }
+            }
             hold_tid = GLib.Timeout.add(1000, on_key_held);
-            key_pressed();
+            key_pressed(this);
         }
 
         public void release () {
-            key_released();
-            if (hold_tid != 0) {
+            if (hold_tid != 0)
                 GLib.Source.remove (hold_tid);
-                hold_tid = 0;
-                key_activated (this);
-                if (keyval != 0) {
-                    xadapter.keyval_press(keyval);
-                    xadapter.keyval_release(keyval);
+
+            if (is_modifier) {
+                if (modifier_state == ModifierState.NONE) {
+                    xadapter.mod_unlock(mod_mask);
+                } else {
+                    return;
                 }
+            }
+
+            if (keyval != 0) {
+                xadapter.keyval_press(keyval);
+                xadapter.keyval_release(keyval);
+            }
+
+            key_released(this);
+
+            if (hold_tid != 0) {
+                key_clicked (this);
+                hold_tid = 0;
             } else {
                 key_hold_end ();
             }
@@ -74,6 +121,8 @@ namespace Caribou {
             hold_tid = 0;
             if (extended_keys.size != 0)
                 show_subkeys = true;
+            if (is_modifier && modifier_state == ModifierState.LATCHED)
+                modifier_state = ModifierState.LOCKED;
             key_hold ();
             return false;
         }
@@ -97,5 +146,16 @@ namespace Caribou {
             press ();
             GLib.Timeout.add(200, () => { release (); return false; });
         }
+    }
+
+    public enum ModifierState {
+        NONE,
+        LATCHED,
+        LOCKED
+    }
+
+    private struct ModifierMapEntry {
+        string name;
+        Gdk.ModifierType mask;
     }
 }
