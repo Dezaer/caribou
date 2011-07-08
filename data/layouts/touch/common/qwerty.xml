@@ -82,7 +82,6 @@
     </row>
     <row>
       <key align="left" name="Caribou_Symbols" toggle="symbols1" width="2.0"/>
-      <key align="left" name="Caribou_Emoticons"/>
       <key align="left" name="space" width="5.0"/>
       <key align="right" name="Caribou_Prefs"/>
     </row>
@@ -169,7 +168,6 @@
     </row>
     <row>
       <key align="left" name="Caribou_Symbols" toggle="symbols1" width="2.0"/>
-      <key align="left" name="Caribou_Emoticons"/>
       <key align="left" name="space" width="5.0"/>
       <key align="right" name="Caribou_Prefs"/>
     </row>
