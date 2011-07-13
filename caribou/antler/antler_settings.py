@@ -13,6 +13,7 @@ AntlerSettings = SettingsTopGroup(
                               "a 'natural' look and feel good for composing simple "
                               "text, to a fullscale keyboard."),
                             allowed=[(('touch'), _('Touch')),
+                                     (('fullscale'), _('Full scale')),
                                      (('scan'), _('Scan'))]),
                         BooleanSetting("use_system", _("Use System Theme"),
                                        True, _("Use System Theme")),
