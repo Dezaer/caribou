@@ -13,6 +13,11 @@ PRETTY_LABELS = {
     "BackSpace" : u'\u232b',
     "space" : u' ',
     "Return" : u'\u23ce',
+    "Return" : u'\u23ce',
+    "Control_L" : u'Ctrl',
+    "Control_R" : u'Ctrl',
+    "Alt_L" : u'Alt',
+    "Alt_R" : u'Alt',
     'Caribou_Prefs' : u'\u2328',
     'Caribou_ShiftUp' : u'\u2b06',
     'Caribou_ShiftDown' : u'\u2b07',
@@ -27,8 +32,6 @@ class AntlerKey(Gtk.Button):
     def __init__(self, key, spacing=0):
         gobject.GObject.__init__(self)
         self.caribou_key = key.weak_ref()
-        self.connect("pressed", self._on_pressed)
-        self.connect("released", self._on_released)
         self.set_label(self._get_key_label())
         self._spacing = spacing
 
@@ -42,12 +45,8 @@ class AntlerKey(Gtk.Button):
         if key.get_extended_keys ():
             self._sublevel = AntlerSubLevel(self)
 
-        self._key_pressed_handler = key.connect(
-            'key-pressed',
-            lambda x: self.set_state_flags(Gtk.StateFlags.ACTIVE, False))
-        self._key_released_handler = key.connect(
-            'key-released',
-            lambda x: self.unset_state_flags(Gtk.StateFlags.ACTIVE))
+        key.connect('key-pressed', self._caribou_key_pressed)
+        key.connect('key-released', self._caribou_key_released)
 
     def set_dwell_scan(self, dwell):
         if dwell:
@@ -74,15 +73,11 @@ class AntlerKey(Gtk.Button):
 
         return "<b>%s</b>" % glib.markup_escape_text(label.encode('utf-8'))
 
-    def _on_pressed(self, button):
-        self._block_key_signal(self._key_pressed_handler)
-        self._press_caribou_key()
-        self._unblock_key_signal(self._key_pressed_handler)
+    def _caribou_key_pressed (self, key, _key):
+        self.set_state_flags(Gtk.StateFlags.ACTIVE, False)
 
-    def _on_released(self, button):
-        self._block_key_signal(self._key_released_handler)
-        self._release_caribou_key()
-        self._unblock_key_signal(self._key_released_handler)
+    def _caribou_key_released (self, key, _key):
+        self.unset_state_flags(Gtk.StateFlags.ACTIVE)
 
     def _press_caribou_key(self):
         if self.caribou_key():
@@ -92,18 +87,22 @@ class AntlerKey(Gtk.Button):
         if self.caribou_key():
             self.caribou_key().release()
 
-    def _block_key_signal(self, handler):
-        if self.caribou_key():
-            self.caribou_key().handler_block(handler)
-
-    def _unblock_key_signal(self, handler):
-        if self.caribou_key():
-            self.caribou_key().handler_unblock(handler)
-
     def do_get_preferred_width_for_height(self, h):
         w = self.caribou_key().props.width
         width = int(h * w + ceil(w - 1) * self._spacing)
         return (width, width)
+
+    def do_pressed(self):
+        self._press_caribou_key()
+
+    def do_released(self):
+        self._release_caribou_key()
+
+    def do_enter(self):
+        self.set_state_flags(Gtk.StateFlags.PRELIGHT, False)
+
+    def do_leave(self):
+        self.unset_state_flags(Gtk.StateFlags.PRELIGHT)
 
 class AntlerSubLevel(Gtk.Window):
     def __init__(self, key):
@@ -237,7 +236,7 @@ class AntlerLayout(Gtk.Box):
                 antler_key = AntlerKey(key, self._spacing)
                 self._keys_map[key] = antler_key
                 alignbox.pack_start (antler_key, True, True, 0);
- 
+
     def load_rows(self, rows):
         for row_num, row in enumerate(rows):
             self.add_row([c.get_children() for c in row.get_columns()], row_num)
@@ -276,7 +275,7 @@ class AntlerKeyboardView(Gtk.Notebook):
 
         self.scanner.set_keyboard(self.keyboard_model)
         self.keyboard_model.connect("notify::active-group", self._on_group_changed)
-        self.keyboard_model.connect("key-activated", self._on_key_activated)
+        self.keyboard_model.connect("key-clicked", self._on_key_clicked)
 
         self.layers = {}
 
@@ -292,7 +291,7 @@ class AntlerKeyboardView(Gtk.Notebook):
 
         self._set_to_active_layer()
 
-    def _on_key_activated(self, model, key):
+    def _on_key_clicked(self, model, key):
         if key.props.name == "Caribou_Prefs":
             p = PreferencesDialog(AntlerSettings())
             p.populate_settings(CaribouSettings())
