@@ -49,7 +49,15 @@ namespace Caribou {
 
         private bool get_acc_geometry (Atk.Object acc,
                                        out int x, out int y, out int w, out int h) {
-            Atk.Object child = find_focused_accessible (acc);
+            Atk.Object child = null;
+
+
+            if (acc.get_role () == Atk.Role.REDUNDANT_OBJECT) {
+                /* It is probably Gecko */
+                child = Atk.get_focus_object ();
+            } else {
+                child = find_focused_accessible (acc);
+            }
 
             if (child == null)
                 return false;
@@ -66,6 +74,7 @@ namespace Caribou {
             Atk.component_get_extents ((Atk.Component) child,
                                        out x, out y, out w, out h,
                                        Atk.CoordType.SCREEN);
+
             return true;
         }
 
@@ -80,19 +89,10 @@ namespace Caribou {
                     int x=0, y=0, w=0, h=0;
                     Gtk.Widget widget = get_window_widget ();
 
-                    if (widget is Gtk.Editable) {
-                        /* Well behaved app */
-                        get_origin_geometry (window, out x, out y, out w, out h);
-                    } else {
-                        Atk.Object acc = widget.get_accessible ();
-                        if (acc.get_role () == Atk.Role.REDUNDANT_OBJECT) {
-                            /* It is probably Gecko */
-                            acc = Atk.get_focus_object ();
-                        }
+                    Atk.Object acc = widget.get_accessible ();
 
-                        if (!get_acc_geometry (acc, out x, out y, out w, out h)) {
-                            return false;
-                        }
+                    if (!get_acc_geometry (acc, out x, out y, out w, out h)) {
+                        get_origin_geometry (window, out x, out y, out w, out h);    
                     }
 
                     try {
