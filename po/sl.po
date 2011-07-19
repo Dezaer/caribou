@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: caribou master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=caribou&keywords=I18N+L10N&component=default\n"
-"POT-Creation-Date: 2011-06-08 20:06+0000\n"
+"POT-Creation-Date: 2011-07-18 19:08+0000\n"
 "PO-Revision-Date: \n"
-"Last-Translator: Andrej Žnidaršič <andrej.znidarsic@gmail.com>\n"
+"Last-Translator: Matej Urbančič <mateju@svn.gnome.org>\n"
 "Language-Team: Slovenian GNOME translation team <gnome-si@googlegroups.com>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -229,35 +229,39 @@ msgid "Touch"
 msgstr "Dotik"
 
 #: ../caribou/antler/antler_settings.py:16
+msgid "Full scale"
+msgstr "Polno merilo"
+
+#: ../caribou/antler/antler_settings.py:17
 msgid "Scan"
 msgstr "Preišči"
 
-#: ../caribou/antler/antler_settings.py:17
 #: ../caribou/antler/antler_settings.py:18
+#: ../caribou/antler/antler_settings.py:19
 msgid "Use System Theme"
 msgstr "Uporabi sistemsko temo"
 
-#: ../caribou/antler/antler_settings.py:19
+#: ../caribou/antler/antler_settings.py:20
 msgid "Minimum Alpha"
 msgstr "Najmanjša alfa"
 
-#: ../caribou/antler/antler_settings.py:20
+#: ../caribou/antler/antler_settings.py:21
 msgid "Minimal opacity of keyboard"
 msgstr "Najmanjša prekrivnost tipkovnice"
 
-#: ../caribou/antler/antler_settings.py:22
+#: ../caribou/antler/antler_settings.py:23
 msgid "Maximum Alpha"
 msgstr "Največja alfa"
 
-#: ../caribou/antler/antler_settings.py:23
+#: ../caribou/antler/antler_settings.py:24
 msgid "Maximal opacity of keyboard"
 msgstr "Največja prekrivnost tipkovnice"
 
-#: ../caribou/antler/antler_settings.py:25
+#: ../caribou/antler/antler_settings.py:26
 msgid "Maximum Distance"
 msgstr "Največja razdalja"
 
-#: ../caribou/antler/antler_settings.py:26
+#: ../caribou/antler/antler_settings.py:27
 msgid "Maximum distance when keyboard is hidden"
 msgstr "Največja razdalja, ko je tipkovnica skrita"
 
