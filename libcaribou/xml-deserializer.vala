@@ -43,8 +43,13 @@ namespace Caribou {
                     return fn;
             }
 
-            throw new IOError.NOT_FOUND (
-                "Could not find layout file for %s %s", group, variant);                       }
+            // If no layout file is found, default to US
+            foreach (string data_dir in dirs) {
+                string fn = get_layout_file_inner (data_dir, "us", "");
+                if (fn != null)
+                    return fn;
+            }
+        }
 
         public static GroupModel? load_group (string keyboard_type,
                                               string group, string variant) {
