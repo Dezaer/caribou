@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: caribou.master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=caribou&keywords=I18N+L10N&component=default\n"
-"POT-Creation-Date: 2011-05-31 19:11+0000\n"
-"PO-Revision-Date: 2011-05-31 21:12+0200\n"
+"POT-Creation-Date: 2011-07-18 17:10+0000\n"
+"PO-Revision-Date: 2011-07-19 11:01+0200\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -24,182 +24,154 @@ msgid "Caribou Preferences"
 msgstr "Preferencias de Caribou"
 
 #: ../caribou/settings/caribou_settings.py:6
-#: ../caribou/settings/caribou_settings.py:55
-msgid "Keyboard"
-msgstr "Teclado"
-
-#: ../caribou/settings/caribou_settings.py:7
-#: ../caribou/settings/caribou_settings.py:24
-msgid "General"
-msgstr "General"
-
-#: ../caribou/settings/caribou_settings.py:9
-msgid "Keyboard Type"
-msgstr "Tipo de teclado"
-
-#: ../caribou/settings/caribou_settings.py:10
-msgid "The keyboard geometery Caribou should use"
-msgstr "La geometría del teclado que Caribou debe usar"
-
-#: ../caribou/settings/caribou_settings.py:11
-msgid ""
-"The keyboard geometery determines the shape and complexity of the keyboard, "
-"it could range from a 'natural' look and feel good for composing simple "
-"text, to a fullscale keyboard."
-msgstr ""
-"La geometría del teclado determina la forma y la complejidad del teclado. "
-"Puede ir desde un aspecto «natural», bueno para escribir textos sencillos "
-"hasta un teclado a escala completa."
-
-#: ../caribou/settings/caribou_settings.py:15
-msgid "Touch"
-msgstr "Tocar"
-
-#: ../caribou/settings/caribou_settings.py:16
-msgid "Scan"
-msgstr "Escanear"
-
-#: ../caribou/settings/caribou_settings.py:18
 msgid "Scanning"
 msgstr "Escaneando"
 
-#: ../caribou/settings/caribou_settings.py:20
+#: ../caribou/settings/caribou_settings.py:8
 msgid "Enable scanning"
 msgstr "Activar análisis"
 
-#: ../caribou/settings/caribou_settings.py:21
+#: ../caribou/settings/caribou_settings.py:9
 msgid "Enable switch scanning"
 msgstr "Activar cambio de análisis"
 
-#: ../caribou/settings/caribou_settings.py:25
+#: ../caribou/settings/caribou_settings.py:12
+msgid "General"
+msgstr "General"
+
+#: ../caribou/settings/caribou_settings.py:13
 msgid "Scanning mode"
 msgstr "Modo de análisis"
 
-#: ../caribou/settings/caribou_settings.py:27
+#: ../caribou/settings/caribou_settings.py:15
 msgid "Scanning type, subgroups, rows or linear"
 msgstr "Tipo de análisis, subgrupos, filas o lineal"
 
-#: ../caribou/settings/caribou_settings.py:28
+#: ../caribou/settings/caribou_settings.py:16
 msgid "Subgroups"
 msgstr "Subgrupos"
 
-#: ../caribou/settings/caribou_settings.py:29
+#: ../caribou/settings/caribou_settings.py:17
 msgid "Rows"
 msgstr "Filas"
 
-#: ../caribou/settings/caribou_settings.py:30
+#: ../caribou/settings/caribou_settings.py:18
 msgid "Linear"
 msgstr "Lineal"
 
-#: ../caribou/settings/caribou_settings.py:32
+#: ../caribou/settings/caribou_settings.py:20
 msgid "Step time"
 msgstr "Tiempo del paso"
 
-#: ../caribou/settings/caribou_settings.py:33
+#: ../caribou/settings/caribou_settings.py:21
 msgid "Time between key transitions"
 msgstr "Tiempo entre transiciones de teclas"
 
-#: ../caribou/settings/caribou_settings.py:36
+#: ../caribou/settings/caribou_settings.py:24
 msgid "Inverse scanning"
 msgstr "Análisis inverso"
 
-#: ../caribou/settings/caribou_settings.py:37
+#: ../caribou/settings/caribou_settings.py:25
 msgid "Step with the switch, activate by dwelling"
 msgstr "Paso con el interruptor, activado con una pulsación al posarse"
 
-#: ../caribou/settings/caribou_settings.py:40
+#: ../caribou/settings/caribou_settings.py:28
 msgid "Auto-restart scanning"
 msgstr "Autoreiniciar análisis"
 
-#: ../caribou/settings/caribou_settings.py:41
+#: ../caribou/settings/caribou_settings.py:29
 msgid "Automatically restart scanning after item activation"
 msgstr "Autoreiniciar el análisis después de la activación de elementos"
 
-#: ../caribou/settings/caribou_settings.py:42
+#: ../caribou/settings/caribou_settings.py:30
 msgid "Scan cycles"
 msgstr "Ciclos de análisis"
 
-#: ../caribou/settings/caribou_settings.py:43
+#: ../caribou/settings/caribou_settings.py:31
 msgid "One"
 msgstr "Uno"
 
-#: ../caribou/settings/caribou_settings.py:44
+#: ../caribou/settings/caribou_settings.py:32
 msgid "Two"
 msgstr "Dos"
 
-#: ../caribou/settings/caribou_settings.py:45
+#: ../caribou/settings/caribou_settings.py:33
 msgid "Three"
 msgstr "Tres"
 
-#: ../caribou/settings/caribou_settings.py:46
+#: ../caribou/settings/caribou_settings.py:34
 msgid "Four"
 msgstr "Cuatro"
 
-#: ../caribou/settings/caribou_settings.py:47
+#: ../caribou/settings/caribou_settings.py:35
 msgid "Five"
 msgstr "Cinco"
 
-#: ../caribou/settings/caribou_settings.py:50
+#: ../caribou/settings/caribou_settings.py:38
 msgid "Input"
 msgstr "Entrada"
 
-#: ../caribou/settings/caribou_settings.py:51
+#: ../caribou/settings/caribou_settings.py:39
 msgid "Switch device"
 msgstr "Cambiar dispositivo"
 
-#: ../caribou/settings/caribou_settings.py:53
+#: ../caribou/settings/caribou_settings.py:41
 msgid "Switch device, keyboard or mouse"
 msgstr "Cambiar dispositivo, teclado o ratón"
 
-#: ../caribou/settings/caribou_settings.py:56
+#: ../caribou/settings/caribou_settings.py:43
+msgid "Keyboard"
+msgstr "Teclado"
+
+#: ../caribou/settings/caribou_settings.py:44
 msgid "Mouse"
 msgstr "Ratón"
 
-#: ../caribou/settings/caribou_settings.py:58
+#: ../caribou/settings/caribou_settings.py:46
 msgid "Switch key"
 msgstr "Tecla de cambio"
 
-#: ../caribou/settings/caribou_settings.py:60
+#: ../caribou/settings/caribou_settings.py:48
 msgid "Key to use with scanning mode"
 msgstr "Tecla que usar con el modo de análisis"
 
-#: ../caribou/settings/caribou_settings.py:62
+#: ../caribou/settings/caribou_settings.py:50
 msgid "Right shift"
 msgstr "Mayús derecho"
 
-#: ../caribou/settings/caribou_settings.py:63
+#: ../caribou/settings/caribou_settings.py:51
 msgid "Left shift"
 msgstr "Mayús izquierdo"
 
-#: ../caribou/settings/caribou_settings.py:64
+#: ../caribou/settings/caribou_settings.py:52
 msgid "Space"
 msgstr "Espacio"
 
-#: ../caribou/settings/caribou_settings.py:65
+#: ../caribou/settings/caribou_settings.py:53
 msgid "Alt Gr"
 msgstr "Alt Gr"
 
-#: ../caribou/settings/caribou_settings.py:66
+#: ../caribou/settings/caribou_settings.py:54
 msgid "Num lock"
 msgstr "Bloq Num"
 
-#: ../caribou/settings/caribou_settings.py:67
+#: ../caribou/settings/caribou_settings.py:55
 msgid "Switch button"
 msgstr "Botón de cambio"
 
-#: ../caribou/settings/caribou_settings.py:70
+#: ../caribou/settings/caribou_settings.py:58
 msgid "Mouse button to use in the scanning mode"
 msgstr "Botón del ratón que usar en el modo de análisis"
 
-#: ../caribou/settings/caribou_settings.py:72
+#: ../caribou/settings/caribou_settings.py:60
 msgid "Button 1"
 msgstr "Botón 1"
 
-#: ../caribou/settings/caribou_settings.py:73
+#: ../caribou/settings/caribou_settings.py:61
 msgid "Button 2"
 msgstr "Botón 2"
 
-#: ../caribou/settings/caribou_settings.py:74
+#: ../caribou/settings/caribou_settings.py:62
 msgid "Button 3"
 msgstr "Botón 3"
 
@@ -244,32 +216,62 @@ msgstr "Antler"
 msgid "Appearance"
 msgstr "Apariencia"
 
-#: ../caribou/antler/antler_settings.py:8
 #: ../caribou/antler/antler_settings.py:9
+msgid "Keyboard Type"
+msgstr "Tipo de teclado"
+
+#: ../caribou/antler/antler_settings.py:10
+msgid "The keyboard geometery Caribou should use"
+msgstr "La geometría del teclado que Caribou debe usar"
+
+#: ../caribou/antler/antler_settings.py:11
+msgid ""
+"The keyboard geometery determines the shape and complexity of the keyboard, "
+"it could range from a 'natural' look and feel good for composing simple "
+"text, to a fullscale keyboard."
+msgstr ""
+"La geometría del teclado determina la forma y la complejidad del teclado. "
+"Puede ir desde un aspecto «natural», bueno para escribir textos sencillos "
+"hasta un teclado a escala completa."
+
+#: ../caribou/antler/antler_settings.py:15
+msgid "Touch"
+msgstr "Tocar"
+
+#: ../caribou/antler/antler_settings.py:16
+msgid "Full scale"
+msgstr "Escala completa"
+
+#: ../caribou/antler/antler_settings.py:17
+msgid "Scan"
+msgstr "Escanear"
+
+#: ../caribou/antler/antler_settings.py:18
+#: ../caribou/antler/antler_settings.py:19
 msgid "Use System Theme"
 msgstr "Usar el tema del sistema"
 
-#: ../caribou/antler/antler_settings.py:10
+#: ../caribou/antler/antler_settings.py:20
 msgid "Minimum Alpha"
 msgstr "Alfa mínima"
 
-#: ../caribou/antler/antler_settings.py:11
+#: ../caribou/antler/antler_settings.py:21
 msgid "Minimal opacity of keyboard"
 msgstr "Opacidad del teclado mínima"
 
-#: ../caribou/antler/antler_settings.py:13
+#: ../caribou/antler/antler_settings.py:23
 msgid "Maximum Alpha"
 msgstr "Alfa máxima"
 
-#: ../caribou/antler/antler_settings.py:14
+#: ../caribou/antler/antler_settings.py:24
 msgid "Maximal opacity of keyboard"
 msgstr "Opacidad del teclado máxima"
 
-#: ../caribou/antler/antler_settings.py:16
+#: ../caribou/antler/antler_settings.py:26
 msgid "Maximum Distance"
 msgstr "Distancia máxima"
 
-#: ../caribou/antler/antler_settings.py:17
+#: ../caribou/antler/antler_settings.py:27
 msgid "Maximum distance when keyboard is hidden"
 msgstr "Distancia máxima cuando el teclado está oculto"
 
