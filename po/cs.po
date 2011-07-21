@@ -1,7 +1,6 @@
 # Czech translation for caribou.
 # Copyright (C) 2010 caribou's COPYRIGHT HOLDER
 # This file is distributed under the same license as the caribou package.
-#
 # Marek Černocký <marek@manet.cz>, 2010, 2011.
 #
 msgid ""
@@ -9,8 +8,8 @@ msgstr ""
 "Project-Id-Version: caribou master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=caribou&keywords=I18N+L10N&component=default\n"
-"POT-Creation-Date: 2011-05-28 20:17+0000\n"
-"PO-Revision-Date: 2011-06-08 07:41+0200\n"
+"POT-Creation-Date: 2011-07-18 17:10+0000\n"
+"PO-Revision-Date: 2011-07-21 08:21+0200\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -24,186 +23,154 @@ msgid "Caribou Preferences"
 msgstr "Předvolby Caribou"
 
 #: ../caribou/settings/caribou_settings.py:6
-#: ../caribou/settings/caribou_settings.py:55
-msgid "Keyboard"
-msgstr "Klávesnice"
-
-#: ../caribou/settings/caribou_settings.py:7
-#: ../caribou/settings/caribou_settings.py:24
-msgid "General"
-msgstr "Obecné"
-
-#: ../caribou/settings/caribou_settings.py:9
-msgid "Keyboard Type"
-msgstr "Typ klávesnice"
-
-#: ../caribou/settings/caribou_settings.py:10
-msgid "The keyboard geometery Caribou should use"
-msgstr "Konfigurace klávesnice, kterou by měla aplikace Caribou použít"
-
-#: ../caribou/settings/caribou_settings.py:11
-msgid ""
-"The keyboard geometery determines the shape and complexity of the keyboard, "
-"it could range from a 'natural' look and feel good for composing simple "
-"text, to a fullscale keyboard."
-msgstr ""
-"Konfigurace klávesnice určuje její tvar a komplexnost a může se pohybovat od "
-"„přirozeného“ vzhledu s dobrým dojmem při psaní jednoduchého textu po "
-"nejrozsáhlejší klávesnici."
-
-#: ../caribou/settings/caribou_settings.py:15
-msgid "Touch"
-msgstr "Dotyk"
-
-#: ../caribou/settings/caribou_settings.py:16
-#| msgid "Scanning"
-msgid "Scan"
-msgstr "Skenovat"
-
-#: ../caribou/settings/caribou_settings.py:18
 msgid "Scanning"
 msgstr "Skenování"
 
-#: ../caribou/settings/caribou_settings.py:20
+#: ../caribou/settings/caribou_settings.py:8
 msgid "Enable scanning"
 msgstr "Zapnout skenování"
 
-#: ../caribou/settings/caribou_settings.py:21
+#: ../caribou/settings/caribou_settings.py:9
 msgid "Enable switch scanning"
 msgstr "Zapnout skenování přepínání"
 
-#: ../caribou/settings/caribou_settings.py:25
+#: ../caribou/settings/caribou_settings.py:12
+msgid "General"
+msgstr "Obecné"
+
+#: ../caribou/settings/caribou_settings.py:13
 msgid "Scanning mode"
 msgstr "Režim skenování"
 
-#: ../caribou/settings/caribou_settings.py:27
-#| msgid "Scanning type, block or row"
+#: ../caribou/settings/caribou_settings.py:15
 msgid "Scanning type, subgroups, rows or linear"
 msgstr "Typ skenování, podskupiny, řádky nebo lineární"
 
-#: ../caribou/settings/caribou_settings.py:28
+#: ../caribou/settings/caribou_settings.py:16
 msgid "Subgroups"
 msgstr "Podskupiny"
 
-#: ../caribou/settings/caribou_settings.py:29
-#| msgid "Row"
+#: ../caribou/settings/caribou_settings.py:17
 msgid "Rows"
 msgstr "Řádky"
 
-#: ../caribou/settings/caribou_settings.py:30
+#: ../caribou/settings/caribou_settings.py:18
 msgid "Linear"
 msgstr "Lineární"
 
-#: ../caribou/settings/caribou_settings.py:32
+#: ../caribou/settings/caribou_settings.py:20
 msgid "Step time"
 msgstr "Čas kroku"
 
-#: ../caribou/settings/caribou_settings.py:33
+#: ../caribou/settings/caribou_settings.py:21
 msgid "Time between key transitions"
 msgstr "Čas mezi změnami kláves"
 
-#: ../caribou/settings/caribou_settings.py:36
-#| msgid "Reverse scanning"
+#: ../caribou/settings/caribou_settings.py:24
 msgid "Inverse scanning"
 msgstr "Obrácené skenování"
 
-#: ../caribou/settings/caribou_settings.py:37
+#: ../caribou/settings/caribou_settings.py:25
 msgid "Step with the switch, activate by dwelling"
 msgstr "Krok s přepnutím, aktivováno posečkáním"
 
-#: ../caribou/settings/caribou_settings.py:40
+#: ../caribou/settings/caribou_settings.py:28
 msgid "Auto-restart scanning"
 msgstr "Automatický restart skenování"
 
-#: ../caribou/settings/caribou_settings.py:41
+#: ../caribou/settings/caribou_settings.py:29
 msgid "Automatically restart scanning after item activation"
 msgstr "Po aktivaci položky automaticky začít skenování od začátku"
 
-#: ../caribou/settings/caribou_settings.py:42
+#: ../caribou/settings/caribou_settings.py:30
 msgid "Scan cycles"
 msgstr "Počet cyklů skenování"
 
-#: ../caribou/settings/caribou_settings.py:43
+#: ../caribou/settings/caribou_settings.py:31
 msgid "One"
 msgstr "Jeden"
 
-#: ../caribou/settings/caribou_settings.py:44
+#: ../caribou/settings/caribou_settings.py:32
 msgid "Two"
 msgstr "Dva"
 
-#: ../caribou/settings/caribou_settings.py:45
+#: ../caribou/settings/caribou_settings.py:33
 msgid "Three"
 msgstr "Tři"
 
-#: ../caribou/settings/caribou_settings.py:46
+#: ../caribou/settings/caribou_settings.py:34
 msgid "Four"
 msgstr "Čtyři"
 
-#: ../caribou/settings/caribou_settings.py:47
+#: ../caribou/settings/caribou_settings.py:35
 msgid "Five"
 msgstr "Pět"
 
-#: ../caribou/settings/caribou_settings.py:50
+#: ../caribou/settings/caribou_settings.py:38
 msgid "Input"
 msgstr "Vstup"
 
-#: ../caribou/settings/caribou_settings.py:51
+#: ../caribou/settings/caribou_settings.py:39
 msgid "Switch device"
 msgstr "Přepínací zařízení"
 
-#: ../caribou/settings/caribou_settings.py:53
+#: ../caribou/settings/caribou_settings.py:41
 msgid "Switch device, keyboard or mouse"
 msgstr "Přepínací zařízení, klávesnici nebo myš"
 
-#: ../caribou/settings/caribou_settings.py:56
+#: ../caribou/settings/caribou_settings.py:43
+msgid "Keyboard"
+msgstr "Klávesnice"
+
+#: ../caribou/settings/caribou_settings.py:44
 msgid "Mouse"
 msgstr "Myš"
 
-#: ../caribou/settings/caribou_settings.py:58
+#: ../caribou/settings/caribou_settings.py:46
 msgid "Switch key"
 msgstr "Přepínací klávesa"
 
-#: ../caribou/settings/caribou_settings.py:60
+#: ../caribou/settings/caribou_settings.py:48
 msgid "Key to use with scanning mode"
 msgstr "Klávesa, která se má použít v režimu skenování"
 
-#: ../caribou/settings/caribou_settings.py:62
+#: ../caribou/settings/caribou_settings.py:50
 msgid "Right shift"
 msgstr "Pravý shift"
 
-#: ../caribou/settings/caribou_settings.py:63
+#: ../caribou/settings/caribou_settings.py:51
 msgid "Left shift"
 msgstr "Levý shift"
 
-#: ../caribou/settings/caribou_settings.py:64
+#: ../caribou/settings/caribou_settings.py:52
 msgid "Space"
 msgstr "Mezerník"
 
-#: ../caribou/settings/caribou_settings.py:65
+#: ../caribou/settings/caribou_settings.py:53
 msgid "Alt Gr"
 msgstr "Alt Gr"
 
-#: ../caribou/settings/caribou_settings.py:66
+#: ../caribou/settings/caribou_settings.py:54
 msgid "Num lock"
 msgstr "Num lock"
 
-#: ../caribou/settings/caribou_settings.py:67
+#: ../caribou/settings/caribou_settings.py:55
 msgid "Switch button"
 msgstr "Přepínací tlačítko"
 
-#: ../caribou/settings/caribou_settings.py:70
+#: ../caribou/settings/caribou_settings.py:58
 msgid "Mouse button to use in the scanning mode"
 msgstr "Tlačítko myši, které se má použít v režimu skenování"
 
-#: ../caribou/settings/caribou_settings.py:72
+#: ../caribou/settings/caribou_settings.py:60
 msgid "Button 1"
 msgstr "Tlačítko 1"
 
-#: ../caribou/settings/caribou_settings.py:73
+#: ../caribou/settings/caribou_settings.py:61
 msgid "Button 2"
 msgstr "Tlačítko 2"
 
-#: ../caribou/settings/caribou_settings.py:74
+#: ../caribou/settings/caribou_settings.py:62
 msgid "Button 3"
 msgstr "Tlačítko 3"
 
@@ -248,32 +215,62 @@ msgstr "Antler"
 msgid "Appearance"
 msgstr "Vzhled"
 
-#: ../caribou/antler/antler_settings.py:8
 #: ../caribou/antler/antler_settings.py:9
+msgid "Keyboard Type"
+msgstr "Typ klávesnice"
+
+#: ../caribou/antler/antler_settings.py:10
+msgid "The keyboard geometery Caribou should use"
+msgstr "Konfigurace klávesnice, kterou by měla aplikace Caribou použít"
+
+#: ../caribou/antler/antler_settings.py:11
+msgid ""
+"The keyboard geometery determines the shape and complexity of the keyboard, "
+"it could range from a 'natural' look and feel good for composing simple "
+"text, to a fullscale keyboard."
+msgstr ""
+"Konfigurace klávesnice určuje její tvar a komplexnost a může se pohybovat od "
+"„přirozeného“ vzhledu s dobrým dojmem při psaní jednoduchého textu po "
+"nejrozsáhlejší klávesnici."
+
+#: ../caribou/antler/antler_settings.py:15
+msgid "Touch"
+msgstr "Dotyk"
+
+#: ../caribou/antler/antler_settings.py:16
+msgid "Full scale"
+msgstr "Plné měřítko"
+
+#: ../caribou/antler/antler_settings.py:17
+msgid "Scan"
+msgstr "Skenovat"
+
+#: ../caribou/antler/antler_settings.py:18
+#: ../caribou/antler/antler_settings.py:19
 msgid "Use System Theme"
 msgstr "Použít systémový motiv"
 
-#: ../caribou/antler/antler_settings.py:10
+#: ../caribou/antler/antler_settings.py:20
 msgid "Minimum Alpha"
 msgstr "Minimální alfa"
 
-#: ../caribou/antler/antler_settings.py:11
+#: ../caribou/antler/antler_settings.py:21
 msgid "Minimal opacity of keyboard"
 msgstr "Minimální průsvitnost klávesnice"
 
-#: ../caribou/antler/antler_settings.py:13
+#: ../caribou/antler/antler_settings.py:23
 msgid "Maximum Alpha"
 msgstr "Maximální alfa"
 
-#: ../caribou/antler/antler_settings.py:14
+#: ../caribou/antler/antler_settings.py:24
 msgid "Maximal opacity of keyboard"
 msgstr "Maximální průsvitnost klávesnice"
 
-#: ../caribou/antler/antler_settings.py:16
+#: ../caribou/antler/antler_settings.py:26
 msgid "Maximum Distance"
 msgstr "Maximální vzdálenost"
 
-#: ../caribou/antler/antler_settings.py:17
+#: ../caribou/antler/antler_settings.py:27
 msgid "Maximum distance when keyboard is hidden"
 msgstr "Maximální vzdálenost, když je klávesnice skryta"
 
