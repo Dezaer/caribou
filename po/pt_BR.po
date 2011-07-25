@@ -3,161 +3,177 @@
 # This file is distributed under the same license as the caribou package.
 # Albino Biasutti Neto <biasuttin@gmail.com>, 2010.
 # Hugo Vaz Sampaio <hvazsampaio@gmail.com>, 2010.
+# Gabriel Speckhahn <gabspeck@gmail.com>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: caribou master\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=caribo"
-"u&keywords=I18N+L10N&component=default\n"
-"POT-Creation-Date: 2011-05-02 17:26+0000\n"
-"PO-Revision-Date: 2011-05-03 14:24-0200\n"
-"Last-Translator: Djavan Fagundes <djavan@comum.org>\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=caribou&keywords=I18N+L10N&component=default\n"
+"POT-Creation-Date: 2011-07-18 17:10+0000\n"
+"PO-Revision-Date: 2011-06-27 20:25-0200\n"
+"Last-Translator: Gabriel Speckhahn <gabspeck@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <gnome-pt_br-list@gnome.org>\n"
-"Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Virtaal 0.6.1\n"
+"X-Generator: Virtaal 0.7.0\n"
+"X-Project-Style: gnome\n"
 
 #: ../caribou/settings/caribou_settings.py:5
 msgid "Caribou Preferences"
 msgstr "Preferências do Caribou"
 
 #: ../caribou/settings/caribou_settings.py:6
-#: ../caribou/settings/caribou_settings.py:41
-msgid "Keyboard"
-msgstr "Teclado"
+msgid "Scanning"
+msgstr "Varrendo"
 
-#: ../caribou/settings/caribou_settings.py:7
-#: ../caribou/settings/caribou_settings.py:23
+#: ../caribou/settings/caribou_settings.py:8
+msgid "Enable scanning"
+msgstr "Habilitar varredura"
+
+#: ../caribou/settings/caribou_settings.py:9
+msgid "Enable switch scanning"
+msgstr "Habilitar varredura por alternância"
+
+#: ../caribou/settings/caribou_settings.py:12
 msgid "General"
 msgstr "Geral"
 
-#: ../caribou/settings/caribou_settings.py:9
-#| msgid "Keyboard"
-msgid "Keyboard Type"
-msgstr "Tipo de teclado"
-
-#: ../caribou/settings/caribou_settings.py:10
-#| msgid "The layout Caribou should use."
-msgid "The keyboard geometery Caribou should use"
-msgstr "A geometria do teclado que o Caribou deve usar."
-
-#: ../caribou/settings/caribou_settings.py:11
-msgid ""
-"The keyboard geometery determines the shape and complexity of the keyboard, "
-"it could range from a 'natural' look and feel good for composing simple "
-"text, to a fullscale keyboard."
-msgstr ""
-"A geometria do teclado determina a forma e a complexidade do teclado, ele "
-"pode ter um aspecto \"natural\" para compor um texto simples até ser um "
-"teclado de escala completa."
+#: ../caribou/settings/caribou_settings.py:13
+msgid "Scanning mode"
+msgstr "Modo de varredura"
 
 #: ../caribou/settings/caribou_settings.py:15
-msgid "Touch"
-msgstr "Toque"
+msgid "Scanning type, subgroups, rows or linear"
+msgstr "Tipo de varredura, subgrupos, linhas ou linear"
+
+#: ../caribou/settings/caribou_settings.py:16
+msgid "Subgroups"
+msgstr "Subgrupos"
 
 #: ../caribou/settings/caribou_settings.py:17
-msgid "Scanning"
-msgstr "Detectando"
+msgid "Rows"
+msgstr "Linhas"
 
-#: ../caribou/settings/caribou_settings.py:19
-msgid "Enable scanning"
-msgstr "Habilitar detecção"
+#: ../caribou/settings/caribou_settings.py:18
+msgid "Linear"
+msgstr "Linear"
 
 #: ../caribou/settings/caribou_settings.py:20
-msgid "Enable switch scanning"
-msgstr "Habilitar opção de detecção"
-
-#: ../caribou/settings/caribou_settings.py:24
-msgid "Scanning mode"
-msgstr "Modo de detecção"
-
-#: ../caribou/settings/caribou_settings.py:26
-msgid "Scanning type, block or row"
-msgstr "Detectar tipo, bloco ou fila"
-
-#: ../caribou/settings/caribou_settings.py:27
-msgid "Block"
-msgstr "Bloquear"
-
-#: ../caribou/settings/caribou_settings.py:28
-msgid "Row"
-msgstr "Fila"
-
-#: ../caribou/settings/caribou_settings.py:29
 msgid "Step time"
 msgstr "Tempo da etapa"
 
-#: ../caribou/settings/caribou_settings.py:30
+#: ../caribou/settings/caribou_settings.py:21
 msgid "Time between key transitions"
-msgstr "Tempo entre teclas de transição"
+msgstr "Tempo entre transições de tecla"
+
+#: ../caribou/settings/caribou_settings.py:24
+msgid "Inverse scanning"
+msgstr "Varredura inversa"
+
+#: ../caribou/settings/caribou_settings.py:25
+msgid "Step with the switch, activate by dwelling"
+msgstr "Etapa com a alternância, ativado por permanência"
+
+#: ../caribou/settings/caribou_settings.py:28
+msgid "Auto-restart scanning"
+msgstr "Reiniciar varredura automaticamente"
+
+#: ../caribou/settings/caribou_settings.py:29
+msgid "Automatically restart scanning after item activation"
+msgstr "Reinicia a varredura automaticamente depois da ativação de um item"
+
+#: ../caribou/settings/caribou_settings.py:30
+msgid "Scan cycles"
+msgstr "Ciclos de varredura"
+
+#: ../caribou/settings/caribou_settings.py:31
+msgid "One"
+msgstr "Um"
+
+#: ../caribou/settings/caribou_settings.py:32
+msgid "Two"
+msgstr "Dois"
 
 #: ../caribou/settings/caribou_settings.py:33
-msgid "Reverse scanning"
-msgstr "digitalização reversa"
+msgid "Three"
+msgstr "Três"
 
 #: ../caribou/settings/caribou_settings.py:34
-msgid "Scan in reverse order"
-msgstr "Digitalizar na ordem reversa"
+msgid "Four"
+msgstr "Quatro"
 
-#: ../caribou/settings/caribou_settings.py:36
+#: ../caribou/settings/caribou_settings.py:35
+msgid "Five"
+msgstr "Cinco"
+
+#: ../caribou/settings/caribou_settings.py:38
 msgid "Input"
 msgstr "Entrada"
 
-#: ../caribou/settings/caribou_settings.py:37
+#: ../caribou/settings/caribou_settings.py:39
 msgid "Switch device"
 msgstr "Trocar dispositivo"
 
-#: ../caribou/settings/caribou_settings.py:39
+#: ../caribou/settings/caribou_settings.py:41
 msgid "Switch device, keyboard or mouse"
-msgstr "Trocar dispositivo, teclado ou mouse"
+msgstr "Alternar dispositivo, teclado ou mouse"
 
-#: ../caribou/settings/caribou_settings.py:42
+#: ../caribou/settings/caribou_settings.py:43
+msgid "Keyboard"
+msgstr "Teclado"
+
+#: ../caribou/settings/caribou_settings.py:44
 msgid "Mouse"
 msgstr "Mouse"
 
-#: ../caribou/settings/caribou_settings.py:44
+#: ../caribou/settings/caribou_settings.py:46
 msgid "Switch key"
-msgstr "Alternar tecla"
+msgstr "Tecla de alternância"
 
-#: ../caribou/settings/caribou_settings.py:47
+#: ../caribou/settings/caribou_settings.py:48
 msgid "Key to use with scanning mode"
-msgstr "Tecla para usar com modo de digitalização"
+msgstr "Tecla a ser usada com o modo de varredura"
 
-#: ../caribou/settings/caribou_settings.py:49
+#: ../caribou/settings/caribou_settings.py:50
 msgid "Right shift"
 msgstr "Shift direito"
 
-#: ../caribou/settings/caribou_settings.py:50
+#: ../caribou/settings/caribou_settings.py:51
 msgid "Left shift"
 msgstr "Shift esquerdo"
 
-#: ../caribou/settings/caribou_settings.py:51
+#: ../caribou/settings/caribou_settings.py:52
+msgid "Space"
+msgstr "Espaço"
+
+#: ../caribou/settings/caribou_settings.py:53
 msgid "Alt Gr"
 msgstr "Alt Gr"
 
-#: ../caribou/settings/caribou_settings.py:52
+#: ../caribou/settings/caribou_settings.py:54
 msgid "Num lock"
 msgstr "Num lock"
 
-#: ../caribou/settings/caribou_settings.py:53
+#: ../caribou/settings/caribou_settings.py:55
 msgid "Switch button"
-msgstr "Alternar botão"
-
-#: ../caribou/settings/caribou_settings.py:56
-msgid "Mouse button to use in the scanning mode"
-msgstr "Botão do mouse para usar no modo digitalização"
+msgstr "Botão de alternância"
 
 #: ../caribou/settings/caribou_settings.py:58
+msgid "Mouse button to use in the scanning mode"
+msgstr "Botão do mouse a ser usado no modo de varredura"
+
+#: ../caribou/settings/caribou_settings.py:60
 msgid "Button 1"
 msgstr "Botão 1"
 
-#: ../caribou/settings/caribou_settings.py:59
+#: ../caribou/settings/caribou_settings.py:61
 msgid "Button 2"
 msgstr "Botão 2"
 
-#: ../caribou/settings/caribou_settings.py:60
+#: ../caribou/settings/caribou_settings.py:62
 msgid "Button 3"
 msgstr "Botão 3"
 
@@ -168,7 +184,7 @@ msgstr "Caribou"
 #: ../caribou/daemon/main.py:31
 #, python-format
 msgid "Error starting %s"
-msgstr "Erro iniciando %s"
+msgstr "Erro ao iniciar %s"
 
 #: ../caribou/daemon/main.py:42
 #, python-format
@@ -176,8 +192,8 @@ msgid ""
 "In order to use %s, accessibility needs to be enabled. Do you want to enable "
 "it now?"
 msgstr ""
-"Para usar %s, a acessibilidade precisa ser habilitada. Você deseja habilitar "
-"agora?"
+"Para usar %s, a acessibilidade precisa estar habilitada. Você deseja "
+"habilitá-la agora?"
 
 #: ../caribou/daemon/main.py:56
 #, python-format
@@ -188,74 +204,76 @@ msgstr ""
 
 #: ../caribou/daemon/main.py:153
 msgid "WARNING - Caribou: unhandled editable widget:"
-msgstr "Aviso – Caribou: widget editável não-manipulado:"
+msgstr "AVISO - Caribou: widget editável não-manipulado:"
 
-#~ msgid "Keyboard layout"
-#~ msgstr "Layout do teclado"
+#: ../caribou/antler/antler_settings.py:5
+msgid "Antler Preferences"
+msgstr "Preferências do Antler"
 
-#~ msgid ""
-#~ "The layout should be in the data directory of Caribou (usually /usr/share/"
-#~ "caribou/keyboards) and should be a .xml or .json file."
-#~ msgstr ""
-#~ "O layout deve estar no diretório de dados do Caribou (geralmente /usr/"
-#~ "share/caribou/keyboards) e deve ser um arquivo .xml ou .json."
+#: ../caribou/antler/antler_settings.py:6
+msgid "Antler"
+msgstr "Antler"
 
-#~ msgid "Color"
-#~ msgstr "Cor"
+#: ../caribou/antler/antler_settings.py:7
+msgid "Appearance"
+msgstr "Aparência"
 
-#~ msgid "Use system theme"
-#~ msgstr "Usar tema do sistema"
+#: ../caribou/antler/antler_settings.py:9
+msgid "Keyboard Type"
+msgstr "Tipo de teclado"
 
-#~ msgid "Use the default theme colors"
-#~ msgstr "Usar o tema de cores padrão"
+#: ../caribou/antler/antler_settings.py:10
+msgid "The keyboard geometery Caribou should use"
+msgstr "A geometria eo teclado que o Caribou deve usar"
 
-#~ msgid "Normal state"
-#~ msgstr "Estado normal"
+#: ../caribou/antler/antler_settings.py:11
+msgid ""
+"The keyboard geometery determines the shape and complexity of the keyboard, "
+"it could range from a 'natural' look and feel good for composing simple "
+"text, to a fullscale keyboard."
+msgstr ""
+"A geometria do teclado determina a forma e a complexidade do teclado, ela "
+"pode variar de um aspecto \"natural\", bom para compor um texto simples, até "
+"um teclado completo."
 
-#~ msgid "Color of the keys when there is no event on them"
-#~ msgstr "Cores das teclas quando não existe evento nelas"
+#: ../caribou/antler/antler_settings.py:15
+msgid "Touch"
+msgstr "Tocar"
 
-#~ msgid "Mouse over"
-#~ msgstr "Mouse sobre"
+#: ../caribou/antler/antler_settings.py:16
+msgid "Full scale"
+msgstr ""
 
-#~ msgid "Color of the keys when the mouse goes over the key"
-#~ msgstr "Cor das teclas quando o mouse estiver sobre a tecla"
+#: ../caribou/antler/antler_settings.py:17
+msgid "Scan"
+msgstr "Varrer"
 
-#~ msgid "Font and size"
-#~ msgstr "Fonte e tamanho"
+#: ../caribou/antler/antler_settings.py:18
+#: ../caribou/antler/antler_settings.py:19
+msgid "Use System Theme"
+msgstr "Usar tema do sistema"
 
-#~ msgid "Use system fonts"
-#~ msgstr "Usar fontes do sistema"
+#: ../caribou/antler/antler_settings.py:20
+msgid "Minimum Alpha"
+msgstr "Alpha mínimo"
 
-#~ msgid "Use the default system font for keyboard"
-#~ msgstr "Usar a fonte padrão do sistema para o teclado"
+#: ../caribou/antler/antler_settings.py:21
+msgid "Minimal opacity of keyboard"
+msgstr "Opacidade mínima do teclado"
 
-#~ msgid "Key font"
-#~ msgstr "Fonte da tecla"
+#: ../caribou/antler/antler_settings.py:23
+msgid "Maximum Alpha"
+msgstr "Alpha máximo"
 
-#~ msgid "Custom font for keyboard"
-#~ msgstr "Fonte personalizada para teclado"
+#: ../caribou/antler/antler_settings.py:24
+msgid "Maximal opacity of keyboard"
+msgstr "Opacidade máxima do teclado"
 
-#~ msgid "Block color"
-#~ msgstr "Cor do bloco"
+#: ../caribou/antler/antler_settings.py:26
+msgid "Maximum Distance"
+msgstr "Distância máxima"
 
-#~ msgid "Color of block scans"
-#~ msgstr "Cor do bloco verificador"
+#: ../caribou/antler/antler_settings.py:27
+msgid "Maximum distance when keyboard is hidden"
+msgstr "Distância máxima quando o teclado permanece oculto"
 
-#~ msgid "Row color"
-#~ msgstr "Cor da fila"
-
-#~ msgid "Color of row scans"
-#~ msgstr "Cor da fila verificadora"
-
-#~ msgid "Key color"
-#~ msgstr "Cor da tecla"
-
-#~ msgid "Color of key scans"
-#~ msgstr "Cor da tecla verificadora"
-
-#~ msgid "Cancel color"
-#~ msgstr "Cancelar cor"
-
-#~ msgid "Color of cancel scan"
-#~ msgstr "Cor do cancelamento da digitalização"
