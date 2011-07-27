@@ -49,6 +49,7 @@ namespace Caribou {
                 if (fn != null)
                     return fn;
             }
+            return "";
         }
 
         public static GroupModel? load_group (string keyboard_type,
