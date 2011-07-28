@@ -57,41 +57,39 @@ AC_SUBST(GETTEXT_PACKAGE)
 AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE, "$GETTEXT_PACKAGE", [The gettext package])
 AM_GLIB_GNU_GETTEXT
 
-dnl == IM modules ==
-AC_ARG_ENABLE(im_gtk3_module,
-    AS_HELP_STRING([--enable-im-gtk3-module],
-                   [Build GTK3 im module]),
-    [enable_gtk3_im_module=$enableval],
-    [enable_gtk3_im_module=no]
+dnl == GTK modules ==
+AC_ARG_ENABLE(gtk3_module,
+    AS_HELP_STRING([--enable-gtk3-module],
+                   [Build GTK3 module]),
+    [enable_gtk3_module=$enableval],
+    [enable_gtk3_module=yes]
 )
-AM_CONDITIONAL([ENABLE_GTK3_IM_MODULE], [test x"$enable_gtk3_im_module" = x"yes"])
+AM_CONDITIONAL([ENABLE_GTK3_MODULES], [test x"$enable_gtk3_module" = x"yes"])
 
-if test x"$enable_gtk3_im_module" = x"yes"; then
+if test x"$enable_gtk3_module" = x"yes"; then
     PKG_CHECK_MODULES(GTK3, [
         gtk+-3.0
     ])
 
-    gtk3_binary_version=`$PKG_CONFIG --variable=gtk_binary_version gtk+-3.0`
-    GTK3_IM_MODULEDIR="$libdir"/gtk-3.0/$gtk3_binary_version/immodules
-    AC_SUBST(GTK3_IM_MODULEDIR)
+    GTK3_MODULES_DIR="$libdir"/gtk-3.0/modules
+    AC_SUBST(GTK3_MODULES_DIR)
 fi
 
-AC_ARG_ENABLE(im_gtk2_module,
-    AS_HELP_STRING([--enable-im-gtk2-module],
-                   [Build GTK2 im module]),
-    [enable_gtk2_im_module=$enableval],
-    [enable_gtk2_im_module=no]
+AC_ARG_ENABLE(gtk2_module,
+    AS_HELP_STRING([--enable-gtk2-module],
+                   [Build GTK2 module]),
+    [enable_gtk2_module=$enableval],
+    [enable_gtk2_module=yes]
 )
-AM_CONDITIONAL([ENABLE_GTK2_IM_MODULE], [test x"$enable_gtk2_im_module" = x"yes"])
+AM_CONDITIONAL([ENABLE_GTK2_MODULES], [test x"$enable_gtk2_module" = x"yes"])
 
-if test x"$enable_gtk2_im_module" = x"yes"; then
+if test x"$enable_gtk2_module" = x"yes"; then
     PKG_CHECK_MODULES(GTK2, [
         gtk+-2.0
     ])
 
-    gtk2_binary_version=`$PKG_CONFIG --variable=gtk_binary_version gtk+-2.0`
-    GTK2_IM_MODULEDIR="$libdir"/gtk-2.0/$gtk2_binary_version/immodules
-    AC_SUBST(GTK2_IM_MODULEDIR)
+    GTK2_MODULES_DIR="$libdir"/gtk-2.0/modules
+    AC_SUBST(GTK2_MODULES_DIR)
 fi
 
 dnl == GSettings ==
@@ -126,8 +124,8 @@ data/layouts/touch/Makefile
 data/layouts/scan/Makefile
 data/layouts/fullscale/Makefile
 libcaribou/Makefile
-im/Makefile
-im/gtk3/Makefile
-im/gtk2/Makefile
+modules/Makefile
+modules/gtk3/Makefile
+modules/gtk2/Makefile
 tools/Makefile
 ])
