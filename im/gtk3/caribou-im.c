@@ -12,15 +12,11 @@ static const GtkIMContextInfo caribou_im_info = {
     "*"
 };
 
-static const GtkIMContextInfo *info_list[] = {
-    &caribou_im_info
-};
-
-G_MODULE_EXPORT GtkIMContext *
+G_MODULE_EXPORT CaribouIMContext *
 gtk_module_init (gint *argc, gchar ***argv[]) {
     g_print("Caribou module loaded \n");
     CaribouIMContext *context = caribou_im_context_new ();
-        return (GtkIMContext *) context;
+        return context;
 }
 
 G_MODULE_EXPORT const gchar*
