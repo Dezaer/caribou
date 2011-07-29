@@ -9,11 +9,53 @@ namespace Caribou {
         public abstract void hide () throws IOError;
     }
 
-    class IMContext : Gtk.IMContextSimple {
-        private Gdk.Window window;
+    class IMContext {
+        private GLib.List<Gtk.Window> windows;
+        private Gdk.Window current_window;
         private Keyboard keyboard;
+        private uint focus_tracker_id;
 
         public IMContext () {
+            try {
+                keyboard = Bus.get_proxy_sync (BusType.SESSION,
+                                               "org.gnome.Caribou.Keyboard",
+                                               "/org/gnome/Caribou/Keyboard");
+            } catch (Error e) {
+                stderr.printf ("%s\n", e.message);
+            }
+
+
+            GLib.Timeout.add (60, () => {
+                Atk.Object acc;
+                GLib.List<Gtk.Widget> levels;
+
+                levels = Gtk.Window.list_toplevels();
+                foreach (Gtk.Widget widget in levels) {
+                    widget.grab_focus();
+                    acc = widget.get_accessible();
+                    current_window = widget.get_root_window();
+                    caribou_focus_tracker(acc);
+                }
+                return true;
+
+            });
+
+            focus_tracker_id = Atk.add_focus_tracker ((Atk.EventListener) caribou_focus_tracker);
+        }
+
+
+        private void caribou_focus_tracker (Atk.Object focus_object) {
+            int x=0, y=0, w=0, h=0;
+            if (!get_acc_geometry (focus_object, out x, out y, out w, out h)) {
+                get_origin_geometry (current_window, out x, out y, out w, out h);
+            }
+
+            try {
+                keyboard.show ();
+                keyboard.set_entry_location (x, y, w, h);
+            } catch (IOError e) {
+                stderr.printf ("%s\n", e.message);
+            }
         }
 
         private void get_origin_geometry (Gdk.Window window,
@@ -78,52 +120,5 @@ namespace Caribou {
             return true;
         }
 
-        private Gtk.Widget get_window_widget () {
-            void *p = null;
-            window.get_user_data (&p);
-            return p as Gtk.Widget;
-        }
-
-        public override void focus_in () {
-            GLib.Timeout.add (100, () => {
-                    int x=0, y=0, w=0, h=0;
-                    Gtk.Widget widget = get_window_widget ();
-
-                    Atk.Object acc = widget.get_accessible ();
-
-                    if (!get_acc_geometry (acc, out x, out y, out w, out h)) {
-                        get_origin_geometry (window, out x, out y, out w, out h);    
-                    }
-
-                    try {
-                        keyboard.show ();
-                        keyboard.set_entry_location (x, y, w, h);
-                    } catch (IOError e) {
-                        stderr.printf ("%s\n", e.message);
-                    }
-                    return false;
-                });
-        }
-
-
-        public override void focus_out () {
-            try {
-                keyboard.hide ();
-            } catch (IOError e) {
-                stderr.printf ("%s\n", e.message);
-            }
-        }
-
-        public override void set_client_window (Gdk.Window window) {
-            this.window = window;
-
-            try {
-                keyboard = Bus.get_proxy_sync (BusType.SESSION,
-                                               "org.gnome.Caribou.Keyboard",
-                                               "/org/gnome/Caribou/Keyboard");
-            } catch (Error e) {
-                stderr.printf ("%s\n", e.message);
-            }
-        }
     }
 }
