@@ -31,17 +31,14 @@ namespace Caribou {
                 GLib.List<Gtk.Window> toplevels;
 
                 toplevels = Gtk.Window.list_toplevels();
-                foreach (Gtk.Window widget in toplevels) {
-                    acc = widget.get_accessible();
-                    current_window = widget.get_root_window();
-                    //acc.focus_event.connect(caribou_focus_tracker);
-
-                    caribou_focus_tracker(acc, widget.has_toplevel_focus);
+                foreach (Gtk.Window window in toplevels) {
+                    current_window = window.get_root_window();
+                    window.set_focus.connect(caribou_focus_tracker);
 
                     // FIXME: vala's annotation for Gtk.Window.list_toplevels()
                     // is wrong, so we have to leak the windows to avoid
                     // a double-free.
-                    windows.append(widget);
+                    windows.append(window);
                 }
                 return true;
 
@@ -51,8 +48,9 @@ namespace Caribou {
         }
 
 
-        private void caribou_focus_tracker (Atk.Object focus_object, bool arg1) {
-            if (arg1 && focus_object is Atk.EditableText) {
+        private void caribou_focus_tracker (Gtk.Window window, Gtk.Widget? widget) {
+            Atk.Object focus_object = window.get_accessible();
+            if (widget.has_focus && focus_object is Atk.EditableText) {
                 int x=0, y=0, w=0, h=0;
                 if (!get_acc_geometry (focus_object, out x, out y, out w, out h)) {
                     get_origin_geometry (current_window, out x, out y, out w, out h);
