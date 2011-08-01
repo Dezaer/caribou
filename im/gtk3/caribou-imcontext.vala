@@ -45,7 +45,7 @@ namespace Caribou {
 
             });
 
-            focus_tracker_id = Atk.add_focus_tracker ((Atk.EventListener) caribou_focus_tracker);
+            //focus_tracker_id = Atk.add_focus_tracker (caribou_focus_tracker);
         }
 
 
