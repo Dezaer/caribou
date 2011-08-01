@@ -27,7 +27,6 @@ namespace Caribou {
 
 
             GLib.Timeout.add (60, () => {
-                Atk.Object acc;
                 GLib.List<Gtk.Window> toplevels;
 
                 toplevels = Gtk.Window.list_toplevels();
@@ -49,8 +48,11 @@ namespace Caribou {
 
 
         private void caribou_focus_tracker (Gtk.Window window, Gtk.Widget? widget) {
+            if (widget == null)
+                return;
+
             Atk.Object focus_object = window.get_accessible();
-            if (widget.has_focus && focus_object is Atk.EditableText) {
+            if (focus_object is Atk.EditableText) {
                 int x=0, y=0, w=0, h=0;
                 if (!get_acc_geometry (focus_object, out x, out y, out w, out h)) {
                     get_origin_geometry (current_window, out x, out y, out w, out h);
