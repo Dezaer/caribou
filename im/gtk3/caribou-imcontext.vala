@@ -27,14 +27,19 @@ namespace Caribou {
 
             GLib.Timeout.add (60, () => {
                 Atk.Object acc;
-                GLib.List<Gtk.Widget> levels;
+                GLib.List<Gtk.Window> toplevels;
 
-                levels = Gtk.Window.list_toplevels();
-                foreach (Gtk.Widget widget in levels) {
+                toplevels = Gtk.Window.list_toplevels();
+                foreach (Gtk.Window widget in toplevels) {
                     widget.grab_focus();
                     acc = widget.get_accessible();
                     current_window = widget.get_root_window();
                     caribou_focus_tracker(acc);
+
+                    // FIXME: vala's annotation for Gtk.Window.list_toplevels()
+                    // is wrong, so we have to leak the windows to avoid
+                    // a double-free.
+                    windows.append(widget);
                 }
                 return true;
 
