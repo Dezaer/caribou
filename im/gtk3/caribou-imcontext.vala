@@ -16,6 +16,7 @@ namespace Caribou {
         private uint focus_tracker_id;
 
         public IMContext () {
+            windows = new GLib.List<Gtk.Window>();
             try {
                 keyboard = Bus.get_proxy_sync (BusType.SESSION,
                                                "org.gnome.Caribou.Keyboard",
@@ -31,10 +32,11 @@ namespace Caribou {
 
                 toplevels = Gtk.Window.list_toplevels();
                 foreach (Gtk.Window widget in toplevels) {
-                    widget.grab_focus();
                     acc = widget.get_accessible();
                     current_window = widget.get_root_window();
-                    caribou_focus_tracker(acc);
+                    //acc.focus_event.connect(caribou_focus_tracker);
+
+                    caribou_focus_tracker(acc, widget.has_toplevel_focus);
 
                     // FIXME: vala's annotation for Gtk.Window.list_toplevels()
                     // is wrong, so we have to leak the windows to avoid
@@ -49,17 +51,26 @@ namespace Caribou {
         }
 
 
-        private void caribou_focus_tracker (Atk.Object focus_object) {
-            int x=0, y=0, w=0, h=0;
-            if (!get_acc_geometry (focus_object, out x, out y, out w, out h)) {
-                get_origin_geometry (current_window, out x, out y, out w, out h);
-            }
+        private void caribou_focus_tracker (Atk.Object focus_object, bool arg1) {
+            if (arg1 && focus_object is Atk.EditableText) {
+                int x=0, y=0, w=0, h=0;
+                if (!get_acc_geometry (focus_object, out x, out y, out w, out h)) {
+                    get_origin_geometry (current_window, out x, out y, out w, out h);
+                }
 
-            try {
-                keyboard.show ();
-                keyboard.set_entry_location (x, y, w, h);
-            } catch (IOError e) {
-                stderr.printf ("%s\n", e.message);
+                try {
+                    keyboard.show ();
+                    keyboard.set_entry_location (x, y, w, h);
+                } catch (IOError e) {
+                    stderr.printf ("%s\n", e.message);
+                }
+            }
+            else {
+                try {
+                    keyboard.hide ();
+                } catch (IOError e) {
+                    stderr.printf("%s\n", e.message);
+                }
             }
         }
 
