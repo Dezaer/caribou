@@ -32,7 +32,6 @@ namespace Caribou {
                 toplevels = Gtk.Window.list_toplevels();
                 foreach (Gtk.Window window in toplevels) {
                     if (windows.find(window) == null) {
-                        current_window = window.get_root_window();
                         window.set_focus.connect(caribou_focus_tracker);
 
                         // FIXME: vala's annotation for Gtk.Window.list_toplevels()
@@ -52,6 +51,7 @@ namespace Caribou {
         private void caribou_focus_tracker (Gtk.Window window, Gtk.Widget? widget) {
             print("I am getting called\n");
             Atk.Object focus_object = widget != null ? widget.get_accessible() : null;
+            current_window = window.get_root_window();
             if (widget != null && (widget is Gtk.Entry || widget is Gtk.TextView) && focus_object is Atk.EditableText) {
                 int x=0, y=0, w=0, h=0;
                 if (!get_acc_geometry (focus_object, out x, out y, out w, out h)) {
