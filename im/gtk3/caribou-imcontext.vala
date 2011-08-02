@@ -5,8 +5,8 @@ namespace Caribou {
             throws IOError;
         public abstract void set_entry_location (int x, int y, int w, int h)
             throws IOError;
-        public abstract void show () throws IOError;
-        public abstract void hide () throws IOError;
+        public abstract void show (uint32 timestamp) throws IOError;
+        public abstract void hide (uint32 timestamp) throws IOError;
     }
 
     class IMContext {
@@ -43,8 +43,8 @@ namespace Caribou {
             //focus_tracker_id = Atk.add_focus_tracker (caribou_focus_tracker);
         }
 
-
         private void caribou_focus_tracker (Gtk.Window window, Gtk.Widget? widget) {
+            uint32 timestamp = Gtk.get_current_event_time();
             current_window = window.get_root_window();
             if (widget != null && (widget is Gtk.Entry || widget is Gtk.TextView) && widget is Gtk.Editable) {
                 Atk.Object focus_object = widget.get_accessible();
@@ -53,7 +53,7 @@ namespace Caribou {
                     get_origin_geometry (current_window, out x, out y, out w, out h);
                 }
                 try {
-                    keyboard.show ();
+                    keyboard.show (timestamp);
                     keyboard.set_entry_location (x, y, w, h);
                 } catch (IOError e) {
                     stderr.printf ("%s\n", e.message);
@@ -61,7 +61,7 @@ namespace Caribou {
             }
             else {
                 try {
-                    keyboard.hide ();
+                    keyboard.hide (timestamp);
                 } catch (IOError e) {
                     stderr.printf("%s\n", e.message);
                 }
