@@ -48,13 +48,12 @@ namespace Caribou {
 
 
         private void caribou_focus_tracker (Gtk.Window window, Gtk.Widget? widget) {
-            Atk.Object focus_object = window.get_accessible();
-            if (widget != null && focus_object is Atk.EditableText) {
+            Atk.Object focus_object = widget != null ? widget.get_accessible() : null;
+            if (widget != null && (widget is Gtk.Entry || widget is Gtk.TextView) && focus_object is Atk.EditableText) {
                 int x=0, y=0, w=0, h=0;
                 if (!get_acc_geometry (focus_object, out x, out y, out w, out h)) {
                     get_origin_geometry (current_window, out x, out y, out w, out h);
                 }
-
                 try {
                     keyboard.show ();
                     keyboard.set_entry_location (x, y, w, h);
