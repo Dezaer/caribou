@@ -27,18 +27,14 @@ namespace Caribou {
 
 
             GLib.Timeout.add (60, () => {
-                GLib.List<Gtk.Window> toplevels;
+                GLib.List<weak Gtk.Window> toplevels;
 
                 toplevels = Gtk.Window.list_toplevels();
                 foreach (Gtk.Window window in toplevels) {
                     if (windows.find(window) == null) {
                         window.set_focus.connect(caribou_focus_tracker);
-                    }
-
-                        // FIXME: vala's annotation for Gtk.Window.list_toplevels()
-                        // is wrong, so we have to leak the windows to avoid
-                        // a double-free.
                         windows.append(window);
+                    }
                 }
                 return true;
 
