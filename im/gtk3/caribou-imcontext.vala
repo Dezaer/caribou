@@ -58,7 +58,6 @@ namespace Caribou {
                     get_origin_geometry (current_window, out x, out y, out w, out h);
                 }
                 try {
-                    print(@"caribou coords $x, $y, $w, $h\n");
                     keyboard.show (timestamp);
                     keyboard.set_entry_location (x, y, w, h);
                 } catch (IOError e) {
