@@ -12,7 +12,6 @@ namespace Caribou {
     class IMContext {
         private GLib.List<Gtk.Window> windows;
         private Keyboard keyboard;
-        private uint focus_tracker_id;
 
         public IMContext () {
             windows = new GLib.List<Gtk.Window>();
@@ -24,20 +23,22 @@ namespace Caribou {
                 stderr.printf ("%s\n", e.message);
             }
 
+            add_tracker ();
 
-            GLib.Timeout.add (60, () => {
-                GLib.List<weak Gtk.Window> toplevels;
+            GLib.Timeout.add (60, () => { add_tracker ();
+                                                  return true; });
+        }
 
-                toplevels = Gtk.Window.list_toplevels();
-                foreach (Gtk.Window window in toplevels) {
-                    if (windows.find(window) == null) {
-                        window.notify["has-toplevel-focus"].connect(get_top_level_focus);
-                        windows.append(window);
-                    }
+        private void add_tracker () {
+            GLib.List<weak Gtk.Window> toplevels;
+
+            toplevels = Gtk.Window.list_toplevels();
+            foreach (Gtk.Window window in toplevels) {
+                if (windows.find(window) == null) {
+                    window.notify["has-toplevel-focus"].connect(get_top_level_focus);
+                    windows.append(window);
                 }
-                return true;
-
-            });
+            }
         }
 
         private void get_top_level_focus (Object obj, ParamSpec prop) {
