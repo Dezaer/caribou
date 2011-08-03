@@ -52,7 +52,7 @@ namespace Caribou {
             uint32 timestamp = Gtk.get_current_event_time();
             if (widget != null && (widget is Gtk.Entry || widget is Gtk.TextView) && widget is Gtk.Editable) {
                 Atk.Object focus_object = widget.get_accessible();
-                Gdk.Window current_window = widget.get_root_window();
+                Gdk.Window current_window = widget.get_window();
                 int x=0, y=0, w=0, h=0;
                 if (!get_acc_geometry (focus_object, out x, out y, out w, out h)) {
                     get_origin_geometry (current_window, out x, out y, out w, out h);
