@@ -38,8 +38,6 @@ namespace Caribou {
                 return true;
 
             });
-
-            //focus_tracker_id = Atk.add_focus_tracker (caribou_focus_tracker);
         }
 
         private void get_top_level_focus (Object obj, ParamSpec prop) {
@@ -54,7 +52,7 @@ namespace Caribou {
                 Atk.Object focus_object = widget.get_accessible();
                 Gdk.Window current_window = widget.get_window();
                 int x=0, y=0, w=0, h=0;
-                if (!get_acc_geometry (focus_object, out x, out y, out w, out h)) {
+                if (current_window != null && !get_acc_geometry (focus_object, out x, out y, out w, out h)) {
                     get_origin_geometry (current_window, out x, out y, out w, out h);
                 }
                 try {
