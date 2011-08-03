@@ -1,12 +1,12 @@
-immoduledir = @GTK2_IM_MODULEDIR@
-immodule_LTLIBRARIES = im-caribou.la
+gtk_modulesdir = @GTK2_MODULES_DIR@
+gtk_modules_LTLIBRARIES = libcaribou.la
 
-im_caribou_la_SOURCES = \
+libcaribou_la_SOURCES = \
 	caribou-imcontext.vala \
 	caribou-im.c \
 	$(NULL)
 
-im_caribou_la_VALAFLAGS = \
+libcaribou_la_VALAFLAGS = \
 	-h caribou-imcontext.h \
     --vapidir=. \
 	--pkg vapi-fixes \
@@ -14,16 +14,16 @@ im_caribou_la_VALAFLAGS = \
 	-D GTK2 \
 	$(VALAGLAFS)
 
-im_caribou_la_CFLAGS = \
+libcaribou_la_CFLAGS = \
         @GTK2_CFLAGS@ \
         -DG_LOG_DOMAIN=\"CARIBOU\" \
         $(NULL)
 
-im_caribou_la_LIBADD = \
+libcaribou_la_LIBADD = \
         @GTK2_LIBS@ \
         $(NULL)
 
-im_caribou_la_LDFLAGS = \
+libcaribou_la_LDFLAGS = \
         -avoid-version \
         -module \
         $(NULL)
