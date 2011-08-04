@@ -14,8 +14,6 @@ gtk_module_init (gint *argc, gchar ***argv[]) {
 G_MODULE_EXPORT const gchar*
 g_module_check_init (GModule *module)
 {
-    return glib_check_version (GLIB_MAJOR_VERSION,
-                               GLIB_MINOR_VERSION,
-                               0);
+    return gtk_check_version (GTK_MAJOR_VERSION, 0, 0);
 }
 
