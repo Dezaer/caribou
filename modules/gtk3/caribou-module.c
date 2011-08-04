@@ -1,13 +1,13 @@
 #include <gtk/gtk.h>
 #include <gtk/gtkimmodule.h>
-#include "caribou-gtk-modules.h"
+#include "caribou-gtk-module.h"
 #include <stdio.h>
 
 #define CARIBOU_LOCALDIR ""
 
-G_MODULE_EXPORT CaribouGtkModules *
+G_MODULE_EXPORT CaribouGtkModule *
 gtk_module_init (gint *argc, gchar ***argv[]) {
-    CaribouGtkModules *context = caribou_gtk_modules_new ();
+    CaribouGtkModule *context = caribou_gtk_module_new ();
         return context;
 }
 

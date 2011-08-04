@@ -9,11 +9,11 @@ namespace Caribou {
         public abstract void hide (uint32 timestamp) throws IOError;
     }
 
-    class GtkModules {
+    class GtkModule {
         private GLib.List<Gtk.Window> windows;
         private Keyboard keyboard;
 
-        public GtkModules () {
+        public GtkModule () {
             windows = new GLib.List<Gtk.Window>();
             try {
                 keyboard = Bus.get_proxy_sync (BusType.SESSION,

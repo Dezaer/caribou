@@ -2,12 +2,12 @@ gtk_modulesdir = @GTK3_MODULES_DIR@
 gtk_modules_LTLIBRARIES = libcaribou.la
 
 libcaribou_la_SOURCES = \
-	caribou-gtk-modules.vala \
+	caribou-gtk-module.vala \
 	caribou-module.c \
 	$(NULL)
 
 libcaribou_la_VALAFLAGS = \
-	-h caribou-gtk-modules.h \
+	-h caribou-gtk-module.h \
     --vapidir=. \
 	--pkg vapi-fixes \
 	--pkg gtk+-3.0 \

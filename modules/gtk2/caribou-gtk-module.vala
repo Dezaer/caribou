@@ -1,0 +1,1 @@
+../gtk3/caribou-gtk-module.vala
