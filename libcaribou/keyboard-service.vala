@@ -3,8 +3,8 @@ namespace Caribou {
     public abstract class KeyboardService : Object {
         public abstract void set_cursor_location(int x, int y, int w, int h);
         public abstract void set_entry_location(int x, int y, int w, int h);
-        public abstract void show();
-        public abstract void hide();
+        public abstract void show(uint32 timestamp);
+        public abstract void hide(uint32 timestamp);
 
         protected void register_keyboard (string name) {
             string dbus_name = @"org.gnome.Caribou.$name";

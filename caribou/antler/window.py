@@ -386,9 +386,9 @@ class AntlerWindowDocked(AntlerWindow):
         x, y = self.get_position()
         return self.animated_move(x + self.get_allocated_width(), y)
 
-    def hide(self, timestamp):
+    def hide(self):
         animation = self._roll_out()
-        animation.connect('completed', lambda x: AntlerWindow.hide(self, timestamp))
+        animation.connect('completed', lambda x: AntlerWindow.hide(self))
 
 class AntlerWindowEntry(AntlerWindow):
     def __init__(self, keyboard_view_factory):

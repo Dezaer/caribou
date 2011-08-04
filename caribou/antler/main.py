@@ -14,10 +14,10 @@ class AntlerKeyboardService(Caribou.KeyboardService):
         loop = gobject.MainLoop()
         loop.run()
 
-    def do_show(self):
+    def do_show(self, timestamp):
         self.window.show_all()
 
-    def do_hide(self):
+    def do_hide(self, timestamp):
         self.window.hide()
 
     def do_set_cursor_location (self, x, y, w, h):
