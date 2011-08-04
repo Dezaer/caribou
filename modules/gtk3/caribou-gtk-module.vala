@@ -38,19 +38,18 @@ namespace Caribou {
             toplevels = Gtk.Window.list_toplevels();
             foreach (Gtk.Window window in toplevels) {
                 if (windows.find(window) == null) {
-                    window.notify["has-toplevel-focus"].connect(get_top_level_focus);
+                    window.notify["has-toplevel-focus"].connect(has_top_level_focus_changed);
                     windows.append(window);
                 }
             }
         }
 
-        private void get_top_level_focus (Object obj, ParamSpec prop) {
+        private void has_top_level_focus_changed (Object obj, ParamSpec prop) {
             Gtk.Window window = (Gtk.Window) obj;
-            if (window.has_toplevel_focus)
-                focus_tracker (window, window.get_focus());
-        }
+            if (!window.has_toplevel_focus)
+                return;
 
-        private void focus_tracker (Gtk.Window window, Gtk.Widget? widget) {
+            Gtk.Widget? widget = window.get_focus();
             uint32 timestamp = Gtk.get_current_event_time();
             if (widget != null && (widget is Gtk.Entry || widget is Gtk.TextView) && widget is Gtk.Editable) {
                 Atk.Object focus_object = widget.get_accessible();
