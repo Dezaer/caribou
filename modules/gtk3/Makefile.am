@@ -9,7 +9,6 @@ libcaribou_la_SOURCES = \
 libcaribou_la_VALAFLAGS = \
 	-h caribou-gtk-module.h \
     --vapidir=. \
-	--pkg vapi-fixes \
 	--pkg gtk+-3.0 \
 	$(VALAGLAFS)
 
@@ -27,6 +26,3 @@ libcaribou_la_LDFLAGS = \
         -module \
         $(NULL)
 
-EXTRA_DIST = \
-	vapi-fixes.vapi \
-	$(NULL)
