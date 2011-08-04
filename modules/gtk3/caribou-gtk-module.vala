@@ -21,8 +21,11 @@ namespace Caribou {
                                                "/org/gnome/Caribou/Keyboard");
                 add_tracker ();
 
-                GLib.Timeout.add (60, () => { add_tracker ();
-                                              return true; });
+                // Need to use a timeout because there is currently no other
+                // way to know whether a new window has been created
+                // https://bugzilla.gnome.org/show_bug.cgi?id=655828
+                GLib.Timeout.add_seconds (10, () => { add_tracker ();
+                                                      return true; });
             } catch (Error e) {
                 stderr.printf ("%s\n", e.message);
             }
