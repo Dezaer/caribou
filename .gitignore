@@ -44,5 +44,5 @@ caribou-internals-1.0.vapi
 caribou-internals.h
 *.stamp
 data/org.gnome.Caribou.Antler.service
-caribou-imcontext.[ch]
+caribou-gtk-module.[ch]
 */layouts/*/*.xml
