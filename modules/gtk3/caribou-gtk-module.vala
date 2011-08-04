@@ -19,14 +19,14 @@ namespace Caribou {
                 keyboard = Bus.get_proxy_sync (BusType.SESSION,
                                                "org.gnome.Caribou.Keyboard",
                                                "/org/gnome/Caribou/Keyboard");
+                add_tracker ();
+
+                GLib.Timeout.add (60, () => { add_tracker ();
+                                              return true; });
             } catch (Error e) {
                 stderr.printf ("%s\n", e.message);
             }
 
-            add_tracker ();
-
-            GLib.Timeout.add (60, () => { add_tracker ();
-                                                  return true; });
         }
 
         private void add_tracker () {
