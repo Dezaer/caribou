@@ -29,14 +29,23 @@ namespace Caribou {
         }
 
         private Gdk.FilterReturn event_filter (Gdk.XEvent xevent, Gdk.Event evt) {
+            Gdk.Window? gdkwindow;
             void* data;
             Gtk.Window window;
 
-            if (evt.any.window == null ||
-                evt.any.window.get_window_type () != Gdk.WindowType.TOPLEVEL)
+#if GTK2
+            void* pointer = &xevent;
+            X.Event* xev = (X.Event *) pointer;
+            gdkwindow = (Gdk.Window) Gdk.x11_xid_table_lookup_for_display (display, (X.ID) xev.xany.window);
+#else
+            gdkwindow = evt.any.window;
+#endif
+
+            if (gdkwindow == null ||
+                gdkwindow.get_window_type () != Gdk.WindowType.TOPLEVEL)
                 return Gdk.FilterReturn.CONTINUE;
 
-            Gdk.window_get_user_data (evt.any.window, out data);
+            Gdk.window_get_user_data (gdkwindow, out data);
             if (data == null || !(data is Gtk.Window))
                 return Gdk.FilterReturn.CONTINUE;
 
