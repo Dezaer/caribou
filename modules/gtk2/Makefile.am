@@ -9,6 +9,7 @@ libcaribou_gtk_module_la_SOURCES = \
 libcaribou_gtk_module_la_VALAFLAGS = \
 	-h caribou-gtk-module.h \
 	--vapidir=. \
+	--pkg gdk-x11-2.0 \
 	--pkg gtk+-2.0 \
 	-D GTK2 \
 	$(VALAGLAFS)

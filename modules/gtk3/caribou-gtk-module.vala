@@ -12,10 +12,13 @@ namespace Caribou {
     class GtkModule {
         private GLib.HashTable<Gtk.Window, bool> windows;
         private Keyboard keyboard;
+        private Gdk.Display display;
 
         public GtkModule () {
             windows = new GLib.HashTable<Gtk.Window, bool> (null, null);
             try {
+                display = Gdk.Display.get_default ();
+
                 keyboard = Bus.get_proxy_sync (BusType.SESSION,
                                                "org.gnome.Caribou.Keyboard",
                                                "/org/gnome/Caribou/Keyboard");
@@ -58,7 +61,12 @@ namespace Caribou {
         }
 
         private void do_focus_change (Gtk.Widget? widget) {
-            uint32 timestamp = Gtk.get_current_event_time ();
+#if GTK2
+            uint32 timestamp = Gdk.x11_display_get_user_time (display);
+#else
+            uint32 timestamp = Gdk.X11Display.get_user_time (display);
+#endif
+
             if (widget != null && (widget is Gtk.Entry || widget is Gtk.TextView) && widget is Gtk.Editable) {
                 Gdk.Window current_window = widget.get_window ();
                 int x = 0, y = 0, w = 0, h = 0;
