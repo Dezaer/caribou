@@ -67,7 +67,10 @@ namespace Caribou {
             uint32 timestamp = Gdk.X11Display.get_user_time (display);
 #endif
 
-            if (widget != null && (widget is Gtk.Entry || widget is Gtk.TextView) && widget is Gtk.Editable) {
+            if ((widget is Gtk.Editable &&
+                 ((Gtk.Editable) widget).get_editable ()) ||
+                (widget is Gtk.TextView &&
+                 ((Gtk.TextView) widget).get_editable ())) {
                 Gdk.Window current_window = widget.get_window ();
                 int x = 0, y = 0, w = 0, h = 0;
                 if (current_window != null)
