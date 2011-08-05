@@ -22,31 +22,33 @@ namespace Caribou {
                 keyboard = Bus.get_proxy_sync (BusType.SESSION,
                                                "org.gnome.Caribou.Keyboard",
                                                "/org/gnome/Caribou/Keyboard");
-                add_tracker ();
-
-                // Need to use a timeout because there is currently no other
-                // way to know whether a new window has been created
-                // https://bugzilla.gnome.org/show_bug.cgi?id=655828
-                GLib.Timeout.add_seconds (10, () => { add_tracker ();
-                                                      return true; });
+                Gdk.window_add_filter (null, event_filter);
             } catch (Error e) {
                 stderr.printf ("%s\n", e.message);
             }
-
         }
 
-        private void add_tracker () {
-            GLib.List<weak Gtk.Window> toplevels;
+        private Gdk.FilterReturn event_filter (Gdk.XEvent xevent, Gdk.Event evt) {
+            void* data;
+            Gtk.Window window;
 
-            toplevels = Gtk.Window.list_toplevels ();
-            foreach (Gtk.Window window in toplevels) {
-                if (!windows.lookup (window)) {
-                    window.notify["has-toplevel-focus"].connect (toplevel_focus_changed);
-                    window.set_focus.connect (window_focus_changed);
-                    window.destroy.connect (() => { windows.remove (window); });
-                    windows.insert (window, true);
-                }
+            if (evt.any.window == null ||
+                evt.any.window.get_window_type () != Gdk.WindowType.TOPLEVEL)
+                return Gdk.FilterReturn.CONTINUE;
+
+            Gdk.window_get_user_data (evt.any.window, out data);
+            if (data == null || !(data is Gtk.Window))
+                return Gdk.FilterReturn.CONTINUE;
+
+            window = (Gtk.Window *) data;
+            if (!windows.lookup (window)) {
+                windows.insert (window, true);
+                window.notify["has-toplevel-focus"].connect (toplevel_focus_changed);
+                window.set_focus.connect (window_focus_changed);
+                window.destroy.connect (() => { windows.remove (window); });
             }
+
+            return Gdk.FilterReturn.CONTINUE;
         }
 
         private void toplevel_focus_changed (Object obj, ParamSpec prop) {
