@@ -10,11 +10,11 @@ namespace Caribou {
     }
 
     class GtkModule {
-        private GLib.List<Gtk.Window> windows;
+        private GLib.HashTable<Gtk.Window, bool> windows;
         private Keyboard keyboard;
 
         public GtkModule () {
-            windows = new GLib.List<Gtk.Window> ();
+            windows = new GLib.HashTable<Gtk.Window, bool> (null, null);
             try {
                 keyboard = Bus.get_proxy_sync (BusType.SESSION,
                                                "org.gnome.Caribou.Keyboard",
@@ -37,9 +37,10 @@ namespace Caribou {
 
             toplevels = Gtk.Window.list_toplevels ();
             foreach (Gtk.Window window in toplevels) {
-                if (windows.find (window) == null) {
+                if (!windows.lookup (window)) {
                     window.notify["has-toplevel-focus"].connect (has_top_level_focus_changed);
-                    windows.append (window);
+                    window.destroy.connect (() => { windows.remove (window); });
+                    windows.insert (window, true);
                 }
             }
         }
