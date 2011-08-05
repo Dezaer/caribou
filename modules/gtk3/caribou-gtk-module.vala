@@ -14,7 +14,7 @@ namespace Caribou {
         private Keyboard keyboard;
 
         public GtkModule () {
-            windows = new GLib.List<Gtk.Window>();
+            windows = new GLib.List<Gtk.Window> ();
             try {
                 keyboard = Bus.get_proxy_sync (BusType.SESSION,
                                                "org.gnome.Caribou.Keyboard",
@@ -35,11 +35,11 @@ namespace Caribou {
         private void add_tracker () {
             GLib.List<weak Gtk.Window> toplevels;
 
-            toplevels = Gtk.Window.list_toplevels();
+            toplevels = Gtk.Window.list_toplevels ();
             foreach (Gtk.Window window in toplevels) {
-                if (windows.find(window) == null) {
-                    window.notify["has-toplevel-focus"].connect(has_top_level_focus_changed);
-                    windows.append(window);
+                if (windows.find (window) == null) {
+                    window.notify["has-toplevel-focus"].connect (has_top_level_focus_changed);
+                    windows.append (window);
                 }
             }
         }
@@ -49,11 +49,11 @@ namespace Caribou {
             if (!window.has_toplevel_focus)
                 return;
 
-            Gtk.Widget? widget = window.get_focus();
-            uint32 timestamp = Gtk.get_current_event_time();
+            Gtk.Widget? widget = window.get_focus ();
+            uint32 timestamp = Gtk.get_current_event_time ();
             if (widget != null && (widget is Gtk.Entry || widget is Gtk.TextView) && widget is Gtk.Editable) {
-                Gdk.Window current_window = widget.get_window();
-                int x=0, y=0, w=0, h=0;
+                Gdk.Window current_window = widget.get_window ();
+                int x = 0, y = 0, w = 0, h = 0;
                 if (current_window != null)
                     get_origin_geometry (current_window, out x, out y, out w, out h);
 
@@ -63,12 +63,11 @@ namespace Caribou {
                 } catch (IOError e) {
                     stderr.printf ("%s\n", e.message);
                 }
-            }
-            else {
+            } else {
                 try {
                     keyboard.hide (timestamp);
                 } catch (IOError e) {
-                    stderr.printf("%s\n", e.message);
+                    stderr.printf ("%s\n", e.message);
                 }
             }
         }
