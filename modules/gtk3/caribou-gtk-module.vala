@@ -13,6 +13,7 @@ namespace Caribou {
         private GLib.HashTable<Gtk.Window, bool> windows;
         private Keyboard keyboard;
         private Gdk.Display display;
+        private Atk.TextRectangle cursor_rect;
 
         public GtkModule () {
             windows = new GLib.HashTable<Gtk.Window, bool> (null, null);
@@ -83,13 +84,24 @@ namespace Caribou {
                 (widget is Gtk.TextView &&
                  ((Gtk.TextView) widget).get_editable ())) {
                 Gdk.Window current_window = widget.get_window ();
+                Atk.Object object = widget.get_accessible ();
                 int x = 0, y = 0, w = 0, h = 0;
-                if (current_window != null)
-                    get_origin_geometry (current_window, out x, out y, out w, out h);
+                int caret_offset = 0;
+
+                if (object is Atk.Text) {
+                    caret_offset = ((Atk.Text) object).get_caret_offset ();
+                    ((Atk.Text) object).get_range_extents (0, caret_offset, Atk.CoordType.SCREEN, cursor_rect);
+
+                    x = cursor_rect.x; y  = cursor_rect.y; w = cursor_rect.width; h = cursor_rect.height;
+                }
+                else {
+                    if (current_window != null)
+                        get_origin_geometry (current_window, out x, out y, out w, out h);
+                }
 
                 try {
                     keyboard.show (timestamp);
-                    keyboard.set_entry_location (x, y, w, h);
+                    keyboard.set_cursor_location (x, y, w, h);
                 } catch (IOError e) {
                     stderr.printf ("%s\n", e.message);
                 }
