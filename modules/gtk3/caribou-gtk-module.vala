@@ -125,5 +125,13 @@ namespace Caribou {
 #endif
         }
 
+        public void unload () {
+            Gdk.window_remove_filter(null, event_filter);
+            windows = new GLib.HashTable<Gtk.Window, bool> (null, null);
+            cursor_rect.x = cursor_rect.y = cursor_rect.width = cursor_rect.height = 0;
+            keyboard = null;
+            display = null;
+        }
+
     }
 }
