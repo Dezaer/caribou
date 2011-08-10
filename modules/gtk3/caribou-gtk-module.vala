@@ -17,16 +17,21 @@ namespace Caribou {
 
         public GtkModule () {
             windows = new GLib.HashTable<Gtk.Window, bool> (null, null);
-            try {
-                display = Gdk.Display.get_default ();
+            display = Gdk.Display.get_default ();
 
-                keyboard = Bus.get_proxy_sync (BusType.SESSION,
-                                               "org.gnome.Caribou.Keyboard",
-                                               "/org/gnome/Caribou/Keyboard");
-                Gdk.window_add_filter (null, event_filter);
-            } catch (Error e) {
-                stderr.printf ("%s\n", e.message);
+            Bus.get_proxy.begin<Keyboard> (BusType.SESSION, "org.gnome.Caribou.Keyboard",
+                                           "/org/gnome/Caribou/Keyboard", 0, null, callback);
+
+            Gdk.window_add_filter (null, event_filter);
+        }
+
+        private void callback (GLib.Object? obj, GLib.AsyncResult res) {
+            try {
+                keyboard = Bus.get_proxy.end(res);
             }
+            catch (Error e) {
+                stderr.printf ("%s\n", e.message);
+             }
         }
 
         private Gdk.FilterReturn event_filter (Gdk.XEvent xevent, Gdk.Event evt) {
