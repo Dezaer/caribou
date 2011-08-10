@@ -1,4 +1,5 @@
 using Gdk;
+using Atk;
 
 [CCode (cprefix = "Gdk", lower_case_cprefix = "gdk_", cheader_filename = "gdk/gdk.h")]
 
@@ -17,4 +18,12 @@ namespace Gdk {
     [CCode (cname = "gdk_window_get_user_data")]
     public void window_get_user_data (Gdk.Window window,
 									  out void* data);
+}
+
+[CCode (cprefix = "Atk", lower_case_cprefix = "atk_", gir_namespace = "Atk", gir_version = "1.0")]
+
+namespace Atk {
+    [CCode (cname = "atk_text_get_character_extents")]
+    public void get_character_extents (Atk.Text text, int offset, out int x, out int y,
+                                                      out int w, out int h, Atk.CoordType coord);
 }

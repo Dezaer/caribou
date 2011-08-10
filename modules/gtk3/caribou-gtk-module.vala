@@ -90,9 +90,7 @@ namespace Caribou {
 
                 if (object is Atk.Text) {
                     caret_offset = ((Atk.Text) object).get_caret_offset ();
-                    ((Atk.Text) object).get_range_extents (0, caret_offset, Atk.CoordType.SCREEN, cursor_rect);
-
-                    x = cursor_rect.x; y  = cursor_rect.y; w = cursor_rect.width; h = cursor_rect.height;
+                    Atk.get_character_extents ((Atk.Text) object, caret_offset, out x, out y, out w, out h, Atk.CoordType.SCREEN);
                 }
                 else {
                     if (current_window != null)
